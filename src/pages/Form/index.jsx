@@ -1,8 +1,13 @@
 import React from 'react'
 
+import data from './data'
+
 function index() {
+  
   return (
-    <div>index</div>
+    <div>
+      {data[0].category}
+    </div>
   )
 }
 
