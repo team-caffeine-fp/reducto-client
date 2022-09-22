@@ -1,8 +1,11 @@
 import React from 'react'
+import { NavBar } from '../'
 
 function index() {
   return (
-    <div>index</div>
+    <div>
+        <NavBar />
+    </div>
   )
 }
 
