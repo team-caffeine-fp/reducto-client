@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
+import MenuDrawer from '../Drawer';
 
 const index = () => {
   return (
@@ -19,6 +20,7 @@ const index = () => {
             sx={{ mr: 2 }}
           >
           </IconButton>
+          <MenuDrawer/>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>
