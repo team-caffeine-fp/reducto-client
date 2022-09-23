@@ -4,9 +4,12 @@ const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
   
+  // Sidebar
+  const drawerWidth = 240;
+
   return (
     <DataContext.Provider
-      value={{}}
+      value={{drawerWidth}}
     >
       {children}
     </DataContext.Provider>
