@@ -1,16 +1,15 @@
 import React from 'react'
-import { SideBar, MainGrid } from '../../common'
+import { MainGrid } from '../../common'
 
 import styles from './index.module.css'
 
 
-function index() {
+function Dashboard() {
   return (
-    <div className={styles.root}>
-      <SideBar />
+    <div className={styles.root} data-testid={'dashboard'}>
       <MainGrid />
     </div>
   )
 }
 
-export default index
+export default Dashboard

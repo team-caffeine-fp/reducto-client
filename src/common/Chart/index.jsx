@@ -1,6 +1,8 @@
 import React, {useRef} from 'react'
 import Chart from 'chart.js/auto'
 
+import styles from './index.module.css'
+
 function index({config}) {
     const pieElem = useRef()
     const attachPie = () => {
@@ -11,9 +13,9 @@ function index({config}) {
         attachPie()
     })
   return (
-    <canvas id="myChart" width="400" height="400" ref={pieElem}>
-
-    </canvas>
+    <div className={styles.root}>
+      <canvas id="myChart" ref={pieElem} data-testid='chart'></canvas>
+    </div>
 
   )
 }
