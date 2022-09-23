@@ -22,8 +22,14 @@ const index = () => {
           >
           </IconButton>
           <SideBar/>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
             News
+          </Typography>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
+            Your CO<sub>2</sub> emissions
+          </Typography>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Some other stuff
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
