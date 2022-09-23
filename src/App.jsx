@@ -3,6 +3,8 @@ import { Routes, Route} from 'react-router-dom'
 
 import { MainLayout } from "./layouts";
 import { Dashboard, Form } from "./pages";
+import { Login } from "./pages";
+import { Register} from "./pages"
 
 export default function App(){
   return (
@@ -11,6 +13,8 @@ export default function App(){
         <Route index element={<Dashboard />}></Route>
         <Route path={'/form'} element={<Form />}></Route>
       </Route>
+      <Route path={'/login'} element={<Login />}></Route>
+      <Route path={'/register'} element={<Register />}></Route>
     </Routes>
   );
 }
