@@ -64,7 +64,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function MenuDrawer() {
+export default function SideBar() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
