@@ -11,7 +11,7 @@ function index({config}) {
         attachPie()
     })
   return (
-    <canvas id="myChart" width="400" height="400" ref={pieElem}>
+    <canvas id="myChart" width="400" height="400" ref={pieElem} data-testid='chart'>
 
     </canvas>
 
