@@ -1,5 +1,5 @@
 import React from 'react'
-import { SideBar, MainGrid } from '../../common'
+import { MainGrid } from '../../common'
 
 import styles from './index.module.css'
 

@@ -6,9 +6,12 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 
-import SideBar from '../SideBar';
+import {SideBar, useWindowDimensions} from '../';
 
 const index = () => {
+  const { height, width } = useWindowDimensions();
+  
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -21,7 +24,7 @@ const index = () => {
             sx={{ mr: 2 }}
           >
           </IconButton>
-          <SideBar/>
+          {width < 900 ? <SideBar/> : false}
           <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
             News
           </Typography>

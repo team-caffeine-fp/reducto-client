@@ -3,7 +3,6 @@ import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
-import MuiAppBar from '@mui/material/AppBar';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
@@ -12,8 +11,8 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { AiOutlineMenu } from "react-icons/ai"; 
-
-
+import styles from './index.module.css'
+import { useWindowDimensions } from '../'
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -35,23 +34,6 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   }),
 );
 
-// const AppBar = styled(MuiAppBar, {
-//   shouldForwardProp: (prop) => prop !== 'open',
-// })(({ theme, open }) => ({
-//   transition: theme.transitions.create(['margin', 'width'], {
-//     easing: theme.transitions.easing.sharp,
-//     duration: theme.transitions.duration.leavingScreen,
-//   }),
-//   ...(open && {
-//     width: `calc(100% - ${drawerWidth}px)`,
-//     marginLeft: `${drawerWidth}px`,
-//     transition: theme.transitions.create(['margin', 'width'], {
-//       easing: theme.transitions.easing.easeOut,
-//       duration: theme.transitions.duration.enteringScreen,
-//     }),
-//   }),
-// }));
-
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -64,6 +46,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function SideBar() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const { height, width } = useWindowDimensions();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -97,15 +80,16 @@ export default function SideBar() {
         }}
         variant="persistent"
         anchor="left"
-        open={open}
+        open={width > 900 ? true : open}
       >
-        <DrawerHeader>
+        {width > 900 ? <div className={styles.transparent}></div> : 
+        <DrawerHeader >
           <IconButton onClick={handleDrawerClose} data-testid="IconButton">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
             </svg>
           </IconButton>
-        </DrawerHeader>
+        </DrawerHeader> }
         <Divider />
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
