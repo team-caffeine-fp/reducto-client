@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useContext } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -11,8 +12,11 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { AiOutlineMenu } from "react-icons/ai"; 
+
 import styles from './index.module.css'
 import { useWindowDimensions } from '../'
+import DataContext from '../../context';
+
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -47,6 +51,8 @@ export default function SideBar() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const { height, width } = useWindowDimensions();
+  const { drawerWidth } = useContext(DataContext);
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
