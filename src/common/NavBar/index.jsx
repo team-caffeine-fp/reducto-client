@@ -6,6 +6,9 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { AiOutlineMenu } from "react-icons/ai"; 
+
+import SideBar from '../SideBar';
+
 const index = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -20,6 +23,7 @@ const index = () => {
           >
             <AiOutlineMenu />
           </IconButton>
+          <SideBar/>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>
