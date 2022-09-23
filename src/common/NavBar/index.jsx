@@ -10,7 +10,7 @@ import SideBar from '../SideBar';
 
 const index = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }} data-testid="navbar">
       <AppBar position="static">
         <Toolbar>
           <IconButton
