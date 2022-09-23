@@ -11,6 +11,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { AiOutlineMenu } from "react-icons/ai"; 
+
 
 const drawerWidth = 240;
 
@@ -81,11 +83,7 @@ export default function SideBar() {
             edge="start"
             sx={{ mr: 2, ...(open && { display: 'none' }) }}
           >
-            <svg viewBox="0 0 100 100" width="40" height="40">
-                <rect width="100" height="10"></rect>
-                <rect y="30" width="100" height="10"></rect>
-                <rect y="60" width="100" height="10"></rect>
-            </svg>
+            <AiOutlineMenu />
           </IconButton>
       <Drawer
         sx={{
