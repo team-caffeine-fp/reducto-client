@@ -6,10 +6,19 @@ export const DataProvider = ({ children }) => {
   
   // Sidebar
   const drawerWidth = 240;
+  const [open, setOpen] = React.useState(false);
+  const [styles, setStyles] = React.useState({});
+
 
   return (
     <DataContext.Provider
-      value={{drawerWidth}}
+      value={{
+        drawerWidth,
+        open,
+        setOpen,
+        styles,
+        setStyles
+      }}
     >
       {children}
     </DataContext.Provider>
