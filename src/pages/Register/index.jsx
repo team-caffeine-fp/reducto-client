@@ -9,7 +9,7 @@ import { FaUser } from 'react-icons/fa';
 
 const register=()=>{
 
-    const paperStyle={padding :20, height:'60vh',width:'25vw', margin:"5rem auto", borderRadius:"10px"}
+    const paperStyle={padding :20, height:'60vh',width:'25vw', margin:"5rem auto", borderRadius:"10px", opacity: 0.8}
     const avatarStyle={backgroundColor:'blue'}
     const btnstyle={margin:'8px 0'}
     const textfieldStyle = {margin: '0.5rem 0'}

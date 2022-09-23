@@ -4,10 +4,11 @@ import { Grid,Paper, Avatar, TextField, Button, Typography,Link } from '@materia
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import './login.css'
 
 const login=()=>{
 
-    const paperStyle={padding :20, height:'50vh',width:'25vw', margin:"5rem auto", borderRadius:"10px"}
+    const paperStyle={padding :20, height:'50vh',width:'25vw', margin:"7rem auto", borderRadius:"10px", opacity: 0.8}
     const avatarStyle={backgroundColor:'blue'}
     const btnstyle={margin:'8px 0'}
     const textfieldStyle = {margin: '1rem 0'}
