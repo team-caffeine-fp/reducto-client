@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-
+import { AiOutlineMenu } from "react-icons/ai"; 
 const index = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -18,6 +18,7 @@ const index = () => {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
+            <AiOutlineMenu />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News

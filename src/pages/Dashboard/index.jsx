@@ -1,8 +1,15 @@
 import React from 'react'
+import { SideBar, MainGrid } from '../../common'
+
+import styles from './index.module.css'
+
 
 function index() {
   return (
-    <div>Dashboard</div>
+    <div className={styles.root}>
+      <SideBar />
+      <MainGrid />
+    </div>
   )
 }
 
