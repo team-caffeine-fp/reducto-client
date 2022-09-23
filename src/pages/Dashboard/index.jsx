@@ -7,7 +7,6 @@ import styles from './index.module.css'
 function index() {
   return (
     <div className={styles.root}>
-      <SideBar />
       <MainGrid />
     </div>
   )
