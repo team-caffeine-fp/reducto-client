@@ -2,31 +2,28 @@
  * @jest-environment jsdom
  */
 
-  import { screen, render } from '@testing-library/react';
+  import { screen, render, within } from '@testing-library/react';
   import '@testing-library/jest-dom';
   import React from 'react';
   import { BrowserRouter } from 'react-router-dom';
-  import index from '.';
+  import Dashboard from '.';
+  import { SideBar } from '../../common'
  
   const testFunc = jest.fn()
  
   describe("Home page", () => {
  
      beforeEach(() => {
-         render(<BrowserRouter><HomePage /></BrowserRouter>)
+         render(<BrowserRouter><Dashboard /></BrowserRouter>)
      })
  
- 
-     it("Displays a button to join the game", async () => {
- 
-        const button = screen.queryByText("Join Game");
-     
-     })
- 
-     it("Displays a button to a new game", async () => {
- 
-         
-        
-     })
+     it('Dashboard renders a <SideBar />', () => {
+        const { getAllByTestId, getByTestId } = render(<SideBar />);
+        const appHeaders = getAllByTestId('sideBar')
+        for( let appHeader of appHeaders) {
+            const clocksInHeader = within(appHeader).getAllByTestId('IconButton')
+            expect(clocksInHeader.length).toBe(2);
+        }
+      });
  
  })

@@ -4,7 +4,7 @@ import { SideBar, MainGrid } from '../../common'
 import styles from './index.module.css'
 
 
-function index() {
+function Dashboard() {
   return (
     <div className={styles.root}>
       <SideBar />
@@ -13,4 +13,4 @@ function index() {
   )
 }
 
-export default index
+export default Dashboard
