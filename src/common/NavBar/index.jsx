@@ -24,7 +24,8 @@ const index = () => {
             sx={{ mr: 2 }}
           >
           </IconButton>
-          {width < 900 ? <SideBar/> : false}
+          <SideBar />
+          {/* {width < 900 ? <SideBar/> : false} */}
           <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
             News
           </Typography>

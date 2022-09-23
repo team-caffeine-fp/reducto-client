@@ -66,28 +66,43 @@ function index() {
   return (
     <div>
         <Grid container spacing={2}>
-        <Grid item xs={6}>
-            <Chart config={pieConfig} />
-        </Grid>
-        <Grid item xs={6}>
-            <Card> 
-                <Typography variant="h5" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    This month you produced
-                </Typography>
-                <Typography variant="h4" sx={{ mb: 1.5 }} color="text.secondary">
-                    2.345t of CO<sub>2</sub>
-                </Typography>
-                <CardActions>
-                    <Button size="small">Learn More</Button>
-                </CardActions>
-            </Card>
-        </Grid>
-        <Grid item xs={4}>
-            This is xs = 4
-        </Grid>
-        <Grid item xs={8}>
-            <Chart config={barConfig} />
-        </Grid>
+          <Grid item xs={6}>
+              <Chart config={pieConfig} />
+          </Grid>
+          <Grid container spacing={1}>
+            <Grid item xs={3}>
+                <Card> 
+                    <Typography variant="h5" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                        This month you produced
+                    </Typography>
+                    <Typography variant="h4" sx={{ mb: 1.5 }} color="text.secondary">
+                        2.345t of CO<sub>2</sub>
+                    </Typography>
+                    <CardActions>
+                        <Button size="small">Learn More</Button>
+                    </CardActions>
+                </Card>
+            </Grid>
+            <Grid item xs={3}>
+                <Card> 
+                    <Typography variant="h5" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                        This month you produced
+                    </Typography>
+                    <Typography variant="h4" sx={{ mb: 1.5 }} color="text.secondary">
+                        2.345t of CO<sub>2</sub>
+                    </Typography>
+                    <CardActions>
+                        <Button size="small">Learn More</Button>
+                    </CardActions>
+                </Card>
+            </Grid>
+          </Grid>
+          <Grid item xs={4}>
+              This is xs = 4
+          </Grid>
+          <Grid item xs={8}>
+              <Chart config={barConfig} />
+          </Grid>
         </Grid>
     </div>
   )
