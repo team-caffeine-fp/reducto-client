@@ -119,25 +119,22 @@ export default function PersistentDrawerLeft() {
         open={open}
         PaperProps={{
             sx: {
-              backgroundColor: "pink"
+              backgroundColor: "#1976d2"
             }
           }}
       >
         
-        <DrawerHeader color="#333333">
+        <DrawerHeader >
           <IconButton onClick={handleDrawerClose}>
-            <HiChevronLeft/>
+            <HiChevronLeft style={{ fill: '#ffffff'}}/>
           </IconButton>
         </DrawerHeader>
         <Divider />
         <List>
           {['News', `Your emissions`, 'Stuff'].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <p>BEANS</p>
-                </ListItemIcon>
-                <ListItemText primary={text} />
+              <ListItemButton sx={{color:'#ffffff'}}>
+               <ListItemText primary={text} />
               </ListItemButton>
             </ListItem>
           ))}
