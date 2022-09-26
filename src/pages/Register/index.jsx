@@ -1,13 +1,13 @@
 import React from 'react'
-import { Grid,Paper, Avatar, TextField, Button, Typography,Link } from '@material-ui/core'
+import { Grid,Paper, Avatar, TextField, Button, Typography,Link } from '@mui/material'
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 import { FaUser } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md'
 import { RiLockPasswordFill} from 'react-icons/ri'
 import InputAdornment from '@mui/material/InputAdornment';
-import { lightBlue } from '@material-ui/core/colors';
+import { lightBlue } from '@mui/material/colors';
 
 
 
