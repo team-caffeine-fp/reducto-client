@@ -17,7 +17,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { AiOutlineMenu } from "react-icons/ai"; 
 import { HiChevronLeft } from "react-icons/hi"; 
 
-import { Outlet } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 
 
 const drawerWidth = 240;
@@ -67,6 +67,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
+
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -93,16 +94,32 @@ export default function PersistentDrawerLeft() {
           >
             <AiOutlineMenu />
           </IconButton>
+
+
+          {['News', `Your emissions`, 'Stuff'].map((text, index) => (
+            <Button key={text} color='inherit'>
+              {text}
+            </Button>
+          ))}
+
+
+          
+{/* 
+          <Button color="inherit" sx={{ right: 0 }}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
             News
           </Typography>
+          </Button>
+
           <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
             Your CO<sub>2</sub> emissions
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Some other stuff
-          </Typography>
-          <Button color="inherit">Login</Button>
+          </Typography> */}
+          <Button color="inherit">
+            <NavLink to='login' style={{ textDecoration: 'none' }} >Login</NavLink>
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer
