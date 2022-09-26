@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Button, FormControl, FormHelperText, MenuItem, InputAdornment, InputLabel, OutlinedInput, Select } from '@mui/material'
+import { Box, Button, Card, CardContent, FormControl, FormHelperText, MenuItem, InputAdornment, InputLabel, OutlinedInput, Select, Typography } from '@mui/material'
 
 import { fetchDataFromApi } from '../../utils' 
 
@@ -19,6 +19,7 @@ export default function InputAdornments({data, category}) {
     return obj
   }
   const [values, setValues] = React.useState(createStartingObject())
+  const [ fetchedData, setFetchedData ] = React.useState(null)
   const handleChange = e => {
     const newInput = e.target.value
     console.log(values)
@@ -29,7 +30,7 @@ export default function InputAdornments({data, category}) {
   }, [data])
   const handleSubmit = () => {
     const cat = jsfiyString(category)
-    const data = fetchDataFromApi(values, cat)
+    const data = fetchDataFromApi(values, cat, setFetchedData)
     console.log(data)
   }
 
@@ -70,6 +71,20 @@ export default function InputAdornments({data, category}) {
         })}
         <Button variant="contained" onClick={handleSubmit} style={{margin: '20px 0'}}>Submit</Button>
       </div>
+      { fetchedData ?     
+      (<Box style={{display: 'block'}}>
+        <Card sx={{ minWidth: '100%' }}>
+        <CardContent>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            your CO<sub>2</sub> for this activity is: 
+          </Typography>
+          <Typography variant="h5" component="div">
+            {Math.round(fetchedData.co2e)} kg
+          </Typography>
+        </CardContent>    
+      </Card>
+      </Box>)
+      : ''}
     </Box>
   );
 }

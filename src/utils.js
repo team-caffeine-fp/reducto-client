@@ -61,7 +61,7 @@ export const createBarChartObject = (labels, title, data) => {
       }
     }
 
-export const fetchDataFromApi = async (data, cat) => {
+export const fetchDataFromApi = async (data, cat, setData) => {
   console.log(cat)
   const token = import.meta.env.VITE_CLIMATIQ_API_KEY
   let url = 'https://beta3.api.climatiq.io/'
@@ -144,6 +144,6 @@ export const fetchDataFromApi = async (data, cat) => {
     headers: {
       'Authorization': `Bearer ${token}`
     },
-  }).then(data => console.log(data.data, cat))
+  }).then(data => setData(data.data, cat))
   return newData 
 }
