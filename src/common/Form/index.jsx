@@ -34,6 +34,12 @@ export default function InputAdornments({data, category}) {
     console.log(data)
   }
 
+  React.useEffect(() => {
+    if (fetchedData) {
+      console.log('This should be sent to the db: ', fetchedData.co2e, category)
+    }
+  }, [fetchedData])
+
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
       <div>
