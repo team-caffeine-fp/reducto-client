@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const DataContext = createContext({});
 
@@ -6,8 +6,13 @@ export const DataProvider = ({ children }) => {
   
   // Sidebar
   const drawerWidth = 240;
-  const [open, setOpen] = React.useState(false);
-  const [styles, setStyles] = React.useState({});
+  const [open, setOpen] = useState(false);
+  const [styles, setStyles] = useState({});
+
+  //user
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
 
   return (
@@ -17,11 +22,17 @@ export const DataProvider = ({ children }) => {
         open,
         setOpen,
         styles,
-        setStyles
+        setStyles,
+        username,
+        setUsername,
+        email,
+        setEmail,
+        password,
+        setPassword
       }}
     >
       {children}
     </DataContext.Provider>
   );
 };
-export default DataContext;
+export const useData = useContext(DataContext);
