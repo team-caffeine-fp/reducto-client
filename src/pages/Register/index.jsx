@@ -23,6 +23,7 @@ const register=()=>{
     const [businessname, setBusinessname ] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [confirmPass, setConfirmPass] = useState("")
     const {register} = useData()
 
     function handleSubmit(e) {
@@ -76,7 +77,7 @@ const register=()=>{
                 <RiLockPasswordFill />
               </InputAdornment>
             ),
-          }} value={password} onChange={(e) => setPassword(e.target.value)}/>
+          }} value={confirmPass} onChange={(e) => setConfirmPass(e.target.value)}/>
                   <FormControlLabel
                       control={
                       <Checkbox
