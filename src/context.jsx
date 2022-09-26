@@ -38,12 +38,7 @@ export const DataProvider = ({ children }) => {
       // })
       // setUser(resp.data);
       // navigate('/');
-      const options = {
-        headers: new Headers({
-            'Authorization': localStorage.getItem("token")
-        }) 
-    }
-        const resp = await axios.post("/auth/login", { username, password }, options);
+        const resp = await axios.post("/auth/login", { username, password });
         localStorage.setItem("token", resp.data.token)
         const id = resp.data._id
         const user = await axios.get(`/user/${id}`);
