@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
 const DataContext = createContext({});
-const navigate = useNavigate()
 
 export const DataProvider = ({ children }) => {
+  const navigate = useNavigate()
   
   // Sidebar
   const drawerWidth = 240;
@@ -61,4 +61,5 @@ export const DataProvider = ({ children }) => {
     </DataContext.Provider>
   );
 };
-export const useData = useContext(DataContext);
+
+export const useData = () => useContext(DataContext);
