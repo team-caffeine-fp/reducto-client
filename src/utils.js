@@ -1,5 +1,7 @@
-//TODO loop through the amount of data and create additional colors 
+import axios from 'axios'
 
+
+//TODO loop through the amount of data and create additional colors 
 export const createPieChartObject = (labels, title, data) => {
     return {
         type: 'pie',
@@ -58,3 +60,90 @@ export const createBarChartObject = (labels, title, data) => {
         },
       }
     }
+
+export const fetchDataFromApi = async (data, cat) => {
+  console.log(cat)
+  const token = import.meta.env.VITE_CLIMATIQ_API_KEY
+  let url = 'https://beta3.api.climatiq.io/'
+  let postingData = {}
+  if (cat == 'travel_flights') {
+    url = url + 'travel/flights'
+    postingData =         
+    {"legs": [
+      {
+        "from": data["From"],
+        "to": data["Destination"],
+        "passengers": parseInt(data["passengers"]),
+        "class": data["flight class"]
+      },
+    ]}
+  } else if (cat == 'freight_flights') {
+    url = url + 'freight/flights'
+    postingData = {
+      "legs": [
+        {
+            "from": data["From"],
+            "to": data["Destination"],
+            "weight": parseInt(data['Cargo Weight']),
+            "weight_unit": "kg"
+        }, ]
+    }
+  } else if (cat == 'road_freight'){
+    url = url + 'estimate'
+    postingData = {
+      "emission_factor": "freight_vehicle-vehicle_type_truck_medium_or_heavy-fuel_source_na-vehicle_weight_na-percentage_load_na",
+      "parameters": {
+        "weight": parseInt(data['Cargo Weight']),
+        "distance": parseInt(data['Distance']),
+        "weight_unit": "kg",
+        "distance_unit": "km"
+      }
+    }
+  } else if ( cat == 'electricity') {
+    url = url + 'estimate'
+    postingData = {
+      "emission_factor": {
+        "id": "electricity-energy_source_grid_mix",
+        "region": "GB"
+      },
+      "parameters": {
+        "energy": parseInt(data['Energy Amount']),
+        "energy_unit": "kWh"
+      }
+    }
+  } else if (cat == 'cloud_computing_(cpu)') {
+    url = 'https://beta3.api.climatiq.io/compute/'+ 'azure' +'/cpu'  // fix this, for some reason other providers don't work
+    postingData = {
+      "cpu_count": parseInt([data['CPU Count']]),
+      "region": "uk_west", // the codes for the regions have to be mapped to what we've got in the object (data in formView)
+      "cpu_load": parseInt([data['CPU Load']]),
+      "duration": parseInt([data['Duration']]),
+      "duration_unit": "h"
+    }
+  } else if ( cat == 'cloud_computing_(storage)') {
+    url = 'https://beta3.api.climatiq.io/compute/aws/storage'
+    postingData = {
+      "region": "af_south_1", 
+      "storage_type": "ssd",
+      "data": 50,
+      "data_unit": "GB",
+      "duration": 1,
+      "duration_unit": "day"
+    }
+  } else if ( cat == 'cloud_computing_(memory)') {
+    url = 'https://beta3.api.climatiq.io/compute/gcp/memory'
+    postingData = {
+      "region": "us_west_2",
+      "data": 8,
+      "data_unit": "GB",
+      "duration": 24,
+      "duration_unit": "h"
+    }
+  }
+  const newData = await axios.post(url, postingData, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    },
+  }).then(data => console.log(data.data, cat))
+  return newData 
+}
