@@ -1,24 +1,21 @@
 import * as React from 'react';
+import { useContext } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
-import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { AiOutlineMenu } from "react-icons/ai"; 
-import { HiChevronLeft } from "react-icons/hi"; 
 
-import { Outlet } from 'react-router-dom'
-
+import styles from './index.module.css'
+import { useWindowDimensions } from '../'
+import DataContext from '../../context';
 
 const drawerWidth = 240;
 
@@ -41,23 +38,6 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   }),
 );
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
-  transition: theme.transitions.create(['margin', 'width'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -67,9 +47,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function PersistentDrawerLeft() {
+export default function SideBar() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const { height, width } = useWindowDimensions();
+  const { drawerWidth } = useContext(DataContext);
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -80,11 +63,10 @@ export default function PersistentDrawerLeft() {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex' }}  data-testid="sideBar">
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar >
           <IconButton
+            data-testid="IconButton"
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -93,18 +75,6 @@ export default function PersistentDrawerLeft() {
           >
             <AiOutlineMenu />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
-            News
-          </Typography>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
-            Your CO<sub>2</sub> emissions
-          </Typography>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Some other stuff
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
       <Drawer
         sx={{
           width: drawerWidth,
@@ -117,24 +87,23 @@ export default function PersistentDrawerLeft() {
         variant="persistent"
         anchor="left"
         open={open}
-        PaperProps={{
-            sx: {
-              backgroundColor: "#1976d2"
-            }
-          }}
       >
-        
         <DrawerHeader >
-          <IconButton onClick={handleDrawerClose}>
-            <HiChevronLeft style={{ fill: '#ffffff'}}/>
+          <IconButton onClick={handleDrawerClose} data-testid="IconButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
           </IconButton>
-        </DrawerHeader>
+        </DrawerHeader> 
         <Divider />
         <List>
-          {['News', `Your emissions`, 'Stuff'].map((text, index) => (
+          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton sx={{color:'#ffffff'}}>
-               <ListItemText primary={text} />
+              <ListItemButton>
+                <ListItemIcon>
+                  ICON
+                </ListItemIcon>
+                <ListItemText primary={text} />
               </ListItemButton>
             </ListItem>
           ))}
@@ -143,8 +112,9 @@ export default function PersistentDrawerLeft() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <Outlet />
+
       </Main>
     </Box>
   );
 }
+
