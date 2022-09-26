@@ -25,7 +25,7 @@ const login=()=>{
                      <Avatar style={avatarStyle}></Avatar>
                     <h2>Sign In</h2>
                 </Grid>
-                <TextField label='Email' placeholder='Enter email' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
+                <TextField label='Username' placeholder='Enter username' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
           startAdornment: (
             <InputAdornment position="start">
               <MdEmail />
