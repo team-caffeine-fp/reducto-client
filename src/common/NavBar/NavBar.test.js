@@ -18,7 +18,6 @@
  
  
      it('renders a navbar', () => {
-        const { getAllByTestId, getByTestId } = render(<NavBar />);
         const navbar = screen.getAllByTestId('navbar')
         expect(navbar).toBeInTheDocument()
       });

@@ -22,7 +22,7 @@
         const appHeaders = getAllByTestId('sideBar')
         for( let appHeader of appHeaders) {
             const clocksInHeader = within(appHeader).getAllByTestId('IconButton')
-            expect(clocksInHeader.length).toBe(2);
+            expect(clocksInHeader.length).toBe(1);
         }
       });
  
