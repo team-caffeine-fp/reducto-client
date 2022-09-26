@@ -1,9 +1,15 @@
 import React from 'react'
+import { MainGrid } from '../../common'
 
-function index() {
+import styles from './index.module.css'
+
+
+function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <div className={styles.root} data-testid={'dashboard'}>
+      <MainGrid />
+    </div>
   )
 }
 
-export default index
+export default Dashboard
