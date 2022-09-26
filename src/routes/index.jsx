@@ -7,7 +7,7 @@ export default function ProtectedRoute({ redirectTo }) {
     const {user} = useData();
     console.log(user)
 
-    return user ? <Outlet /> : <Navigate to={redirectTo} />
+    return user ? <MainLayout /> : <Navigate to={redirectTo} />
     
     
 }
