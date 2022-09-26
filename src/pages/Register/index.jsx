@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Grid,Paper, Avatar, TextField, Button, Typography,Link } from '@mui/material'
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -8,7 +8,7 @@ import { MdEmail } from 'react-icons/md'
 import { RiLockPasswordFill} from 'react-icons/ri'
 import InputAdornment from '@mui/material/InputAdornment';
 import { lightBlue } from '@mui/material/colors';
-
+import { useData } from '../../context';
 
 
 
@@ -18,6 +18,20 @@ const register=()=>{
     const avatarStyle={backgroundColor:'blue'}
     const btnstyle={margin:'8px 0'}
     const textfieldStyle = {margin: '0.5rem 0', backgroundColor: '#e1f5fe'}
+
+    const [username, setUsername ] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const {register} = useData()
+
+    function handleSubmit(e) {
+      e.preventDefault()
+      register(username, email, password)
+      setUsername('')
+      setEmail('')
+      setPassword('')
+    }
+
     return(
         <Grid>
             <Paper elevation={10} style={paperStyle}>
@@ -25,44 +39,46 @@ const register=()=>{
                      <Avatar style={avatarStyle}></Avatar>
                     <h2>Register</h2>
                 </Grid>
-                <TextField label='Username' placeholder='Enter username' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <FaUser />
-            </InputAdornment>
-          ),
-        }}/>
-                <TextField label='Email' placeholder='Enter email' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <MdEmail />
-            </InputAdornment>
-          ),
-        }}/>
-                <TextField label='Password' placeholder='Enter password' type='password' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <RiLockPasswordFill />
-            </InputAdornment>
-          ),
-        }}/>
-                <TextField label='Confirm Password' placeholder='Confirm password' type='password' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <RiLockPasswordFill />
-            </InputAdornment>
-          ),
-        }}/>
-                <FormControlLabel
-                    control={
-                    <Checkbox
-                        name="checkedB"
-                        color="primary"
-                    />
-                    }
-                    label="Remember me"
-                 />
-                <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Create an account</Button>
+                <form onSubmit={handleSubmit}>
+                  <TextField label='Username' placeholder='Enter username' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <FaUser />
+              </InputAdornment>
+            ),
+          }} value={username} onChange={(e) => setUsername(e.target.value)}/>
+                  <TextField label='Email' placeholder='Enter email' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <MdEmail />
+              </InputAdornment>
+            ),
+          }} value={email} onChange={(e) => setEmail(e.target.value)}/>
+                  <TextField label='Password' placeholder='Enter password' type='password' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <RiLockPasswordFill />
+              </InputAdornment>
+            ),
+          }} value={password} onChange={(e) => setPassword(e.target.value)}/>
+                  <TextField label='Confirm Password' placeholder='Confirm password' type='password' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <RiLockPasswordFill />
+              </InputAdornment>
+            ),
+          }} value={password} onChange={(e) => setPassword(e.target.value)}/>
+                  <FormControlLabel
+                      control={
+                      <Checkbox
+                          name="checkedB"
+                          color="primary"
+                      />
+                      }
+                      label="Remember me"
+                  />
+                  <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Create an account</Button>
+                </form>
                 <Typography > Do you have an account ?
                      <Link href="/login" >
                         Sign In 
