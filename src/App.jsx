@@ -5,6 +5,8 @@ import { MainLayout} from "./layouts";
 import { Dashboard, Form } from "./pages";
 import { DataProvider } from "./context";
 
+import { Login } from "./pages";
+import { Register} from "./pages"
 
 export default function App(){
   return (
@@ -14,6 +16,8 @@ export default function App(){
           <Route index element={<Dashboard />}></Route>
           <Route path={'/form'} element={<Form />}></Route>
         </Route>
+      <Route path={'/login'} element={<Login />}></Route>
+      <Route path={'/register'} element={<Register />}></Route>
           
       </Routes>
     </DataProvider>
