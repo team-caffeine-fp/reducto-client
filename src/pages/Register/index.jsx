@@ -20,14 +20,16 @@ const register=()=>{
     const textfieldStyle = {margin: '0.5rem 0', backgroundColor: '#e1f5fe'}
 
     const [username, setUsername ] = useState("")
+    const [businessname, setBusinessname ] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const {register} = useData()
 
     function handleSubmit(e) {
       e.preventDefault()
-      register(username, email, password)
+      register(username, businessname, email, password)
       setUsername('')
+      setBusinessname('')
       setEmail('')
       setPassword('')
     }
@@ -47,6 +49,13 @@ const register=()=>{
               </InputAdornment>
             ),
           }} value={username} onChange={(e) => setUsername(e.target.value)}/>
+                  <TextField label='businessname' placeholder='Enter business name' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <FaUser />
+              </InputAdornment>
+            ),
+          }} value={businessname} onChange={(e) => setBusinessname(e.target.value)}/>
                   <TextField label='Email' placeholder='Enter email' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
             startAdornment: (
               <InputAdornment position="start">

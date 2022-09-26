@@ -15,9 +15,9 @@ export const DataProvider = ({ children }) => {
   //user
   const [user, setUser] = useState(null);
 
-  async function register(username, email, password) {
+  async function register(username, businessname, email, password) {
     try {
-        const resp = await axios.post("/register", { username, email, password });
+        const resp = await axios.post("/register", { username, businessname, email, password });
         localStorage.setItem("token", resp.data.token)
         setUser(resp.data.user)
         navigate('/login');
@@ -28,7 +28,7 @@ export const DataProvider = ({ children }) => {
 
   async function login(username, password) {
     try {
-        const resp = await axios.post("/login", { username, password });
+        const resp = await axios.post("/auth/login", { username, password });
         localStorage.setItem("token", resp.data.token)
         setUser(resp.data.user);      
         navigate('/');
