@@ -23,9 +23,9 @@ const register=()=>{
             <Paper elevation={10} style={paperStyle}>
                 <Grid align='center'>
                      <Avatar style={avatarStyle}></Avatar>
-                    <h2>Sign In</h2>
+                    <h2>Register</h2>
                 </Grid>
-                <TextField label='Name' placeholder='Enter Name' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
+                <TextField label='Username' placeholder='Enter username' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
           startAdornment: (
             <InputAdornment position="start">
               <FaUser />
