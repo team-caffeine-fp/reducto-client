@@ -5,28 +5,30 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 
 import { Chart } from "../";
-import { createPieChartObject, createBarChartObject } from "../../utils";
+import { createPieChartObject, createBarChartObject, createDataStructureForCharts } from "../../utils";
+import { useData } from '../../context'
+
 
 function MonthlyGrid() {
+  const [ barConfig, setBarConfig ] = React.useState({})
+  const [ pieConfig, setPieConfig ] = React.useState({})
+  const [ chartId , setChartId ] = React.useState(0)
+  const { userData } = useData()
 
-  const pieConfig = createPieChartObject(
-    ["one", "two", "three", "four", "five"],
-    "my title",
-    [300, 50, 100, 0, 0]
-  );
-  const barConfig = createBarChartObject(
-    ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-    "another title",
-    [65, 59, 80, 81, 56, 55, 40]
-  );
+  React.useEffect(() => {
+    setChartId(prev => prev + 1)
+    createDataStructureForCharts(userData, setBarConfig, setPieConfig)
+  }, [])
+  
+
   return (
     <>
       <Grid container spacing={2} style={{ width: "100%" }}>
         <Grid item xs={6}>
-            <Chart config={barConfig}></Chart>
+            <Chart config={pieConfig} canvasId={chartId} />
         </Grid>
         <Grid item xs={6}>
-            <Chart config={barConfig}></Chart>
+            
         </Grid>
       </Grid>
     </>
