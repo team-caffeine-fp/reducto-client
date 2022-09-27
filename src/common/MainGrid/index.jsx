@@ -10,26 +10,24 @@ import styles from './index.module.css'
 import { createPieChartObject, createBarChartObject, createDataStructureForCharts } from '../../utils'
 import { userId, herokuUrl } from '../../settings';
 function index() {
-  const [ userData, setUserData] = React.useState({})
   const [ barConfig, setBarConfig ] = React.useState({})
   const [ pieConfig, setPieConfig ] = React.useState({})
-  const [ id , setId ] = React.useState(0)
-
-  const [userId, setUserId] = React.useState(0)
+  const [ chartId , setChartId ] = React.useState(0)
+  const { setUserData, userId } = useData()
 
   React.useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (setBarConfig, setPieConfig, setChartId) => {
         const options = {
             headers: new Headers({
                 'Authorization': userId
             })}
 
       const data = await axios.get(herokuUrl + '/users/' + userId, options)
-        setId(prev => prev + 1)
+        setChartId(prev => prev + 1)
+        setUserData(data.data)
         createDataStructureForCharts(data.data, setBarConfig, setPieConfig)
-    }   
-    fetchData()
-    
+    }
+    fetchData(setBarConfig, setPieConfig, setChartId)
   }, [])
 
 
@@ -37,8 +35,8 @@ function index() {
     <Container variant={'mainGrid'}>
         <Grid container spacing={2} style={{width: '100%'}}>
           <Grid item xs={8}>
-              <Chart config={barConfig} canvasId={id} />
-              <Chart config={pieConfig} canvasId={id}/>
+              <Chart config={barConfig} canvasId={chartId} />
+              <Chart config={pieConfig} canvasId={chartId}/>
           </Grid>
           <Grid item xs={4} style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}} >
               <Card style={{flexBasis: '30%', borderRadius: '20px', boxShadow: '2px 2px 2px 1px rgba(0, 0, 0, 0.2)', backgroundColor: "red", width: '100%', padding: '50px', marginBottom: '30px' }}> 

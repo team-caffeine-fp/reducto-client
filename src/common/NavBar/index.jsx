@@ -14,6 +14,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { NavLink } from 'react-router-dom'
 import { AiOutlineMenu } from "react-icons/ai"; 
 import { HiChevronLeft } from "react-icons/hi"; 
 
@@ -101,10 +102,10 @@ export default function PersistentDrawerLeft() {
             <AiOutlineMenu />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
-            News
+            <NavLink to={'/'}>Home Page</NavLink>
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
-            Your CO<sub>2</sub> emissions
+            <NavLink to={'/form'}>Form</NavLink>
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Some other stuff

@@ -14,6 +14,7 @@ export const DataProvider = ({ children }) => {
   const [styles, setStyles] = useState({});
   const [userData, setUserData] = useState({})
   const [userId, setUserId] = useState(localStorage.getItem('userId') || null)
+
   //user
   const [user, setUser] = useState(null);
   async function register(username, businessname, email, password) {
@@ -25,6 +26,7 @@ export const DataProvider = ({ children }) => {
       console.log(error)
     }
   }
+
   async function fetchOnReload() {
     try {
       const userIdFromStorage = localStorage.getItem("userId")
@@ -35,8 +37,10 @@ export const DataProvider = ({ children }) => {
         }
       });
     } catch {
+
     }
   }
+
   async function login(username, password) {
     try {
       let resp = await axios.post("/auth/login", { username, password });
