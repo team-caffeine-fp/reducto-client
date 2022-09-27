@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './index.module.css'
 
-const index = ({children}) => {
+const index = ({variant, children}) => {
   return (
-    <div >{children}</div>
+    <div className={styles[variant]} >{children}</div>
   )
 }
 
