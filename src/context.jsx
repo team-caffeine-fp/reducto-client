@@ -60,12 +60,13 @@ export const DataProvider = ({ children }) => {
         console.log(error)
     }
   }
+  // TODO - 
   async function logout() {
     try{
       const options = {
-        headers: new Headers({
-            'Authorization': localStorage.getItem("token")
-        })
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem("token")
+        }
     }
       const resp = await axios.post("/auth/logout",{}, options);
       console.log(resp)
