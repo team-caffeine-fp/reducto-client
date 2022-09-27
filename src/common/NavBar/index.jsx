@@ -79,6 +79,11 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
+  
+  React.useEffect(() => {
+    loadData()
+  },[])
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
