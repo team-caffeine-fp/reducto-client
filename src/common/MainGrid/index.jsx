@@ -14,9 +14,17 @@ function index() {
   const [ barConfig, setBarConfig ] = React.useState({})
   const [ pieConfig, setPieConfig ] = React.useState({})
   const [ id , setId ] = React.useState(0)
+
+  const [userId, setUserId] = React.useState(0)
+
   React.useEffect(() => {
     const fetchData = async () => {
-      const data = await axios.get(herokuUrl + '/users/' + userId)
+        const options = {
+            headers: new Headers({
+                'Authorization': userId
+            })}
+
+      const data = await axios.get(herokuUrl + '/users/' + userId, options)
         setId(prev => prev + 1)
         createDataStructureForCharts(data.data, setBarConfig, setPieConfig)
     }   
