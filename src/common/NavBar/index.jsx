@@ -171,3 +171,5 @@ export default function PersistentDrawerLeft() {
     </Box>
   );
 }
+
+// TODO change Navlink to ListItemText -> ListItemButton onClick={toMonthlyView} -> toMonthlyView(index) =  month = index + 1; setMonth={month}; navigate("/monthly"); -> pass month to the utils -> use month to set totalEmissions
