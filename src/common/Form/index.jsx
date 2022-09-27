@@ -29,7 +29,7 @@ export default function InputAdornments({data, category}) {
     setValues(createStartingObject())
   }, [data])
   const handleSubmit = () => {
-    const cat = jsfiyString(category)
+    const cat = category
     const data = fetchDataFromApi(values, cat, setFetchedData)
     console.log(data)
   }
