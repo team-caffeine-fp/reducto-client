@@ -1,8 +1,9 @@
 import React from 'react'
+import styles from './index.module.css'
 
-function index({children}) {
+const index = ({children}) => {
   return (
-    <div>{children}</div>
+    <div >{children}</div>
   )
 }
 

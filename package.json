@@ -4,7 +4,7 @@
   "description": "This repo contains a small bit of starer code for teaching people about **S**ingle **P**age **A**pplications - SPAs",
   "scripts": {
     "test": "jest --watch --silent",
-    "cov": "jest --watch --verbose --coverage",
+    "cov": "jest --watchAll --coverage",
     "dev": "vite",
     "build": "vite build"
   },
@@ -27,6 +27,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@material-ui/core": "^4.12.4",
     "@mui/material": "^5.10.6",
     "chart.js": "^3.9.1",
     "react": "^18.2.0",
