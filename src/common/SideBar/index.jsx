@@ -61,7 +61,7 @@ export default function SideBar() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  console.log(width)
   return (
     <Box sx={{ display: 'flex' }}  data-testid="sideBar">
       <CssBaseline />
@@ -86,7 +86,7 @@ export default function SideBar() {
         }}
         variant="persistent"
         anchor="left"
-        open={open}
+        open={width > 900 ? true : open}
       >
         <DrawerHeader >
           <IconButton onClick={handleDrawerClose} data-testid="IconButton">
