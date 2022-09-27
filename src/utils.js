@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { herokuUrl, userId } from './settings'
 
 export const createPieChartObject = (labels, title, data) => {
   const backgroundColors = [
@@ -33,6 +34,9 @@ export const createBarChartObject = (labels, title, data) => {
     'rgba(153, 102, 255, 0.8)',
     'rgba(54, 255, 235, 0.8)',
     'rgba(153, 12, 255, 0.8)',
+    'rgba(153, 1, 255, 0.8)',
+    'rgba(54, 34, 235, 0.8)',
+    'rgba(153, 12, 55, 0.8)',
     'rgba(201, 203, 207, 0.8)'
   ]
   const borderColors = [
@@ -44,6 +48,9 @@ export const createBarChartObject = (labels, title, data) => {
     'rgb(153, 102, 255)',
     'rgb(54, 162, 12)',
     'rgb(153, 102, 45)',
+    'rgb(153, 111, 22)',
+    'rgb(54, 33, 12)',
+    'rgb(33, 102, 45)',
     'rgb(201, 203, 207)'
   ]
   const barData = {
@@ -69,12 +76,38 @@ export const createBarChartObject = (labels, title, data) => {
   }
 }
 
+export const createDataStructureForCharts = (data, setBarConfig, setPieConfig) => {
+  console.log(data)
+  const pieConfig = {}
+  pieConfig.data = []
+  pieConfig.labels = ['cloud computing', "cloud memory", "cloud storage", "travel flights", "freight flights", "road freight", "electricity"]
+  const barConfig = {}
+  barConfig.data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  barConfig.labels = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  barConfig.title = 'Our emissions over the year'
+  for (let label of pieConfig.labels) {
+    const totalEmissions = () => {
+      const sumValues = obj => Object.values(obj).reduce((a, b) => a + b)
+      for (let i = 1; i <= 12; i++) {
+        barConfig.data[i-1] += data[label][i]
+      }
+      return sumValues(data[label])
+    }
+    pieConfig.data.push(totalEmissions())
+  }
+  pieConfig.title = 'Our awful emissions'
+  setPieConfig(createPieChartObject(pieConfig.labels, pieConfig.title, pieConfig.data))
+  setBarConfig(createBarChartObject(barConfig.labels, barConfig.title, barConfig.data))
+  console.log('bardata: ',barConfig)
+
+}
+
 export const fetchDataFromApi = async (data, cat, setData) => {
   console.log(cat)
   const token = import.meta.env.VITE_CLIMATIQ_API_KEY
   let url = 'https://beta3.api.climatiq.io/'
   let postingData = {}
-  if (cat == 'travel_flights') {
+  if (cat == 'travel flights') {
     url = url + 'travel/flights'
     postingData =         
     {"legs": [
@@ -85,7 +118,7 @@ export const fetchDataFromApi = async (data, cat, setData) => {
         "class": data["flight class"]
       },
     ]}
-  } else if (cat == 'freight_flights') {
+  } else if (cat == 'freight flights') {
     url = url + 'freight/flights'
     postingData = {
       "legs": [
@@ -96,7 +129,7 @@ export const fetchDataFromApi = async (data, cat, setData) => {
             "weight_unit": "kg"
         }, ]
     }
-  } else if (cat == 'road_freight'){
+  } else if (cat == 'road freight'){
     url = url + 'estimate'
     postingData = {
       "emission_factor": "freight_vehicle-vehicle_type_truck_medium_or_heavy-fuel_source_na-vehicle_weight_na-percentage_load_na",
@@ -119,7 +152,7 @@ export const fetchDataFromApi = async (data, cat, setData) => {
         "energy_unit": "kWh"
       }
     }
-  } else if (cat == 'cloud_computing_(cpu)') {
+  } else if (cat == 'cloud computing') {
     url = 'https://beta3.api.climatiq.io/compute/'+ 'azure' +'/cpu'  // fix this, for some reason other providers don't work
     postingData = {
       "cpu_count": parseInt([data['CPU Count']]),
@@ -128,7 +161,7 @@ export const fetchDataFromApi = async (data, cat, setData) => {
       "duration": parseInt([data['Duration']]),
       "duration_unit": "h"
     }
-  } else if ( cat == 'cloud_computing_(storage)') {
+  } else if ( cat == 'cloud storage') {
     url = 'https://beta3.api.climatiq.io/compute/aws/storage'
     postingData = {
       "region": "af_south_1", 
@@ -138,7 +171,7 @@ export const fetchDataFromApi = async (data, cat, setData) => {
       "duration": 1,
       "duration_unit": "day"
     }
-  } else if ( cat == 'cloud_computing_(memory)') {
+  } else if ( cat == 'cloud memory') {
     url = 'https://beta3.api.climatiq.io/compute/gcp/memory'
     postingData = {
       "region": "us_west_2",
@@ -152,6 +185,10 @@ export const fetchDataFromApi = async (data, cat, setData) => {
     headers: {
       'Authorization': `Bearer ${token}`
     },
-  }).then(data => setData(data.data, cat))
+  }).then(data => {
+    const emissions = data.data.co2e
+    setData(data.data, cat)
+    axios.put( herokuUrl + '/users/' + userId + '/emissions', {co2: emissions, category: cat}).then(res => console.log(res))
+  })
   return newData 
 }
