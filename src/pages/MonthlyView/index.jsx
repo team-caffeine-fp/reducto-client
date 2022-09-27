@@ -1,9 +1,13 @@
 import React from 'react'
+import { MonthlyGrid } from '../../common'
+
 
 function MonthlyView() {
   return (
-    <div>MonthlyView</div>
-  )
+        <>
+        <MonthlyGrid/>
+        </>
+    )
 }
 
 export default MonthlyView
