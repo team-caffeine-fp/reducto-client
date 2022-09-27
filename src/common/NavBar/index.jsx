@@ -18,6 +18,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { HiChevronLeft } from "react-icons/hi"; 
 
 import { Outlet } from 'react-router-dom'
+import useWindowDimensions from '../WindowDimensions';
 
 
 const drawerWidth = 240;
@@ -70,7 +71,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  const { height, width } = useWindowDimensions();
+  
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -79,6 +81,11 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
+  React.useEffect(() => {
+    if (width > 900) {
+      setOpen(true)
+    }
+  }, [width])
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />

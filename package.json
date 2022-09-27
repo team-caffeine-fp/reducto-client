@@ -4,7 +4,7 @@
   "description": "This repo contains a small bit of starer code for teaching people about **S**ingle **P**age **A**pplications - SPAs",
   "scripts": {
     "test": "jest --watch --silent",
-    "cov": "jest --watch --verbose --coverage",
+    "cov": "jest --watchAll --coverage",
     "dev": "vite",
     "build": "vite build"
   },
@@ -30,6 +30,7 @@
     "@mui/material": "^5.10.6",
     "axios": "^0.27.2",
     "chart.js": "^3.9.1",
+    "dotenv": "^16.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
