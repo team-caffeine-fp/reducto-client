@@ -15,8 +15,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { NavLink } from 'react-router-dom'
 import { AiOutlineMenu } from "react-icons/ai"; 
 import { HiChevronLeft } from "react-icons/hi"; 
+
+import { Outlet } from 'react-router-dom'
+import useWindowDimensions from '../WindowDimensions';
 
 import { useData } from '../../context';
 
@@ -70,6 +74,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+
+  const { height, width } = useWindowDimensions();
   const {loadData} = useData()
 
 
@@ -81,11 +87,12 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
-  
   React.useEffect(() => {
-    loadData()
-  },[])
-
+    if (width > 900) {
+      setOpen(true)
+    }
+  }, [width])
+  
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -101,10 +108,10 @@ export default function PersistentDrawerLeft() {
             <AiOutlineMenu />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
-            News
+            <NavLink to={'/'}>Home Page</NavLink>
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
-            Your CO<sub>2</sub> emissions
+            <NavLink to={'/form'}>Form</NavLink>
           </Typography>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Some other stuff
