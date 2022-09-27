@@ -1,6 +1,7 @@
 import React from 'react'
-import { MainGrid } from '../../common'
+import { Paper } from '@mui/material'
 
+import { MainGrid } from '../../common'
 import styles from './index.module.css'
 
 
