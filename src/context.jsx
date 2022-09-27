@@ -68,7 +68,9 @@ export const DataProvider = ({ children }) => {
             'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMyYzJhNjQzZWE3NTliNGQ2ZTc1ZTAiLCJleHAiOjE2NjQyODU3MjB9.xr3FMfeJu0d1a-QmZ8Yu-KCHNUzigqzyEdCYdSqXL-4"
         }) 
     }
-      const resp = await axios.post("/auth/logout",{}, );
+      const userId = '6332c2a643ea759b4d6e75e0'
+      // const userId = userId
+      const resp = await axios.post(`/users/${userId}`,{}, );
       console.log(resp)
       localStorage.removeItem('token')
       setUser(null);
@@ -76,6 +78,7 @@ export const DataProvider = ({ children }) => {
     } catch (error) {
       console.log(error)
   }
+  console.log('Panic❗')
  }
 
   return (

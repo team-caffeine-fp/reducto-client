@@ -8,6 +8,7 @@ import { Chart } from "../";
 import { createPieChartObject, createBarChartObject } from "../../utils";
 
 function MonthlyGrid() {
+
   const pieConfig = createPieChartObject(
     ["one", "two", "three", "four", "five"],
     "my title",

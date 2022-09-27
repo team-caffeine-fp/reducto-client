@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Outlet } from 'react-router-dom'
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -17,8 +18,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { AiOutlineMenu } from "react-icons/ai"; 
 import { HiChevronLeft } from "react-icons/hi"; 
 
-import { Outlet } from 'react-router-dom'
-
+import { useData } from '../../context';
 
 const drawerWidth = 240;
 
@@ -70,6 +70,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const {loadData} = useData()
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
