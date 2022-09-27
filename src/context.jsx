@@ -61,7 +61,22 @@ export const DataProvider = ({ children }) => {
   }
  }
 
- 
+  async function loadData() {
+    try{
+      const options = {
+        headers: new Headers({
+            'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzMyYzJhNjQzZWE3NTliNGQ2ZTc1ZTAiLCJleHAiOjE2NjQyODU3MjB9.xr3FMfeJu0d1a-QmZ8Yu-KCHNUzigqzyEdCYdSqXL-4"
+        }) 
+    }
+      const resp = await axios.post("/auth/logout",{}, );
+      console.log(resp)
+      localStorage.removeItem('token')
+      setUser(null);
+      navigate("/login");
+    } catch (error) {
+      console.log(error)
+  }
+ }
 
   return (
     <DataContext.Provider
@@ -74,7 +89,8 @@ export const DataProvider = ({ children }) => {
         setStyles,
         register,
         login,
-        logout
+        logout,
+        loadData
       }}
     >
       {children}
