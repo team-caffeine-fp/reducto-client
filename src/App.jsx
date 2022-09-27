@@ -1,16 +1,22 @@
 import React from "react"
 import { Routes, Route} from 'react-router-dom'
 
-import { MainLayout } from "./layouts";
-import { Dashboard, Form } from "./pages";
+import { Dashboard, FormView, Login, Register } from "./pages";
+import { DataProvider } from "./context";
+
+import ProtectedRoute from "./routes";
 
 export default function App(){
   return (
-    <Routes>
-      <Route path={'/'} element={<MainLayout />}>
-        <Route index element={<Dashboard />}></Route>
-        <Route path={'/form'} element={<Form />}></Route>
-      </Route>
-    </Routes>
+    <DataProvider>
+      <Routes>
+          <Route path="/" element={<ProtectedRoute redirectTo="/login"/>}>
+              <Route index element={<Dashboard />}></Route>
+              <Route path='/form' element={<FormView />}></Route>
+          </Route>
+          <Route path='/login' element={<Login />}></Route>
+          <Route path='/register' element={<Register />}></Route>   
+      </Routes>
+    </DataProvider>
   );
 }
