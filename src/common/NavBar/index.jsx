@@ -157,7 +157,7 @@ export default function PersistentDrawerLeft() {
           ].map((month, index) => (
             <ListItem key={index} disablePadding>
               <ListItemButton sx={{ color: "#ffffff" }}>
-                <ListItemText primary={month} />
+                <NavLink to={"/monthly"}>{month}</NavLink>
               </ListItemButton>
             </ListItem>
           ))}
