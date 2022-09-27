@@ -25,7 +25,6 @@ function index() {
         createDataStructureForCharts(data.data, setBarConfig, setPieConfig)
     }
     fetchData(setBarConfig, setPieConfig, setChartId)
-    
   }, [])
 
 

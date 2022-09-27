@@ -1,12 +1,9 @@
 import React from "react"
 import { Routes, Route} from 'react-router-dom'
 
-import { MainLayout} from "./layouts";
-import { Dashboard, FormView } from "./pages";
+import { Dashboard, FormView, Login, Register } from "./pages";
 import { DataProvider } from "./context";
 
-import { Login } from "./pages";
-import { Register} from "./pages"
 import ProtectedRoute from "./routes";
 
 export default function App(){

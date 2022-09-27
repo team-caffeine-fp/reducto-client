@@ -3,8 +3,6 @@ import { herokuUrl } from './settings'
 import { useData } from './context'
 
 
-
-
 export const createPieChartObject = (labels, title, data) => {
   const backgroundColors = [
     'rgb(255, 99, 132)',
