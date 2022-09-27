@@ -1,5 +1,7 @@
 import axios from 'axios'
-import { herokuUrl, userId } from './settings'
+import { herokuUrl } from './settings'
+import { useData } from './context'
+
 
 export const createPieChartObject = (labels, title, data) => {
   const backgroundColors = [
@@ -103,6 +105,7 @@ export const createDataStructureForCharts = (data, setBarConfig, setPieConfig) =
 }
 
 export const fetchDataFromApi = async (data, cat, setData) => {
+  const { userId } = useData()
   console.log(cat)
   const token = import.meta.env.VITE_CLIMATIQ_API_KEY
   let url = 'https://beta3.api.climatiq.io/'

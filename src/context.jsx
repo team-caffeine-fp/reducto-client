@@ -12,26 +12,43 @@ export const DataProvider = ({ children }) => {
   const drawerWidth = 240;
   const [open, setOpen] = useState(false);
   const [styles, setStyles] = useState({});
+  const [userData, setUserData] = useState({})
+  const [userId, setUserId] = useState(localStorage.getItem('userId') || null)
 
   //user
   const [user, setUser] = useState(null);
 
   async function register(username, businessname, email, password) {
     try {
-        const resp = await axios.post("/register", { username, businessname, email, password });
-        localStorage.setItem("token", resp.data.token)
-        navigate('/login');
+      const resp = await axios.post("/register", { username, businessname, email, password });
+      localStorage.setItem("token", resp.data.token)
+      navigate('/login');
     } catch (error) {
-        console.log(error)
+      console.log(error)
     }
- }
+  }
 
+  async function fetchOnReload() {
+    try {
+      const userIdFromStorage = localStorage.getItem("userId")
+      const tokenFromStorage = localStorage.getItem("token")
+      const resp = await axios.post("/user/" + userIdFromStorage, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+    } catch {
+
+    }
+  }
 
   async function login(username, password) {
     try {
       let resp = await axios.post("/auth/login", { username, password });
       const {token, _id} = resp.data
+      setUserId(_id)
       localStorage.setItem("token", token)
+      localStorage.setItem("userId", _id)
       resp = await axios.get(`/users/${_id}`, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -74,7 +91,11 @@ export const DataProvider = ({ children }) => {
         setStyles,
         register,
         login,
-        logout
+        logout,
+        userData,
+        setUserData,
+        userId,
+        fetchOnReload
       }}
     >
       {children}

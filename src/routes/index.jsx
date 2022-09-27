@@ -4,7 +4,14 @@ import { useData } from "../context";
 import { MainLayout } from "../layouts";
 
 export default function ProtectedRoute({ redirectTo }) {
-    const {user} = useData();
+    const { fetchOnReload, user } = useData()
+
+    React.useEffect(() => {
+        window.addEventListener("beforeunload", fetchOnReload)
+        return () => {
+          window.removeEventListener("beforeunload", fetchOnReload)
+        };
+      }, []);
     console.log(user)
 
     return user ? <MainLayout /> : <Navigate to={redirectTo} />
