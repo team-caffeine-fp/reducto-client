@@ -8,7 +8,7 @@ import { Chart } from '../'
 import styles from './index.module.css'
 import { createPieChartObject, createBarChartObject } from '../../utils'
 function index() {
-  const pieConfig = createPieChartObject(['one', 'two', 'three', 'four', 'five'], 'my title', [300, 50, 100, 0, 0])
+  const pieConfig = createPieChartObject(['one', 'two', 'three'], 'my title', [300, 50, 100])
   const barConfig = createBarChartObject(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'], 'another title', [65, 59, 80, 81, 56, 55, 40])
   
   return (
