@@ -9,6 +9,9 @@ import { Chart, Container } from '../'
 import styles from './index.module.css'
 import { createPieChartObject, createBarChartObject, createDataStructureForCharts } from '../../utils'
 import { userId, herokuUrl } from '../../settings';
+import { useData } from '../../context'
+
+
 function index() {
   const [ barConfig, setBarConfig ] = React.useState({})
   const [ pieConfig, setPieConfig ] = React.useState({})
@@ -22,9 +25,10 @@ function index() {
                 'Authorization': userId
             })}
 
-      const data = await axios.get(herokuUrl + '/users/' + userId, options)
+        const data = await axios.get(herokuUrl + '/users/' + userId, options)
         setChartId(prev => prev + 1)
         setUserData(data.data)
+        console.log(data.data)
         createDataStructureForCharts(data.data, setBarConfig, setPieConfig)
     }
     fetchData(setBarConfig, setPieConfig, setChartId)
