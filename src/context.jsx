@@ -2,12 +2,13 @@ import React, { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 import { useEffect } from "react";
+import { herokuUrl } from "./settings";
 
 const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
   const navigate = useNavigate()
-  axios.defaults.baseURL="http://127.0.0.1:5000"
+  axios.defaults.baseURL=herokuUrl
   // Sidebar
   const drawerWidth = 240;
   const [open, setOpen] = useState(false);
