@@ -2,7 +2,7 @@ import React from "react"
 import { Routes, Route} from 'react-router-dom'
 
 import { MainLayout} from "./layouts";
-import { Dashboard, FormView } from "./pages";
+import { Dashboard, FormView, MonthlyView } from "./pages";
 import { DataProvider } from "./context";
 
 import { Login } from "./pages";
@@ -15,6 +15,7 @@ export default function App(){
         <Route path={'/'} element={<MainLayout />}>
           <Route index element={<Dashboard />}></Route>
           <Route path={'/form'} element={<FormView />}></Route>
+          <Route path={'/monthly'} element={<MonthlyView/>}></Route>
         </Route>
       <Route path={'/login'} element={<Login />}></Route>
       <Route path={'/register'} element={<Register />}></Route>
