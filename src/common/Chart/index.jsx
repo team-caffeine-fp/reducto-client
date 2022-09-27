@@ -8,10 +8,8 @@ function index({config, canvasId}) {
     const pieElem = useRef()
     const attachPie = () => {
       const ctx = pieElem.current
-      console.log(ctx)
       const pieChart = new Chart(ctx, config)
       setChart(pieChart)
-      console.log(pieChart)
       return pieChart
     }
     React.useEffect(() => {
