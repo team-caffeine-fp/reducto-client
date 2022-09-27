@@ -18,8 +18,6 @@ function index() {
   const [ chartId , setChartId ] = React.useState(0)
   const { setUserData, userId } = useData()
 
-  console.log('beans')
-
   React.useEffect(() => {
     const fetchData = async () => {
         const options = {
@@ -34,7 +32,6 @@ function index() {
         createDataStructureForCharts(data.data, setBarConfig, setPieConfig)
     }
     fetchData()
-    console.log('cheese')
   }, [])
 
 
