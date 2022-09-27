@@ -18,12 +18,14 @@ function index() {
   const [ chartId , setChartId ] = React.useState(0)
   const { setUserData, userId } = useData()
 
+  console.log('beans')
+
   React.useEffect(() => {
-    const fetchData = async (setBarConfig, setPieConfig, setChartId) => {
+    const fetchData = async () => {
         const options = {
-            headers: new Headers({
-                'Authorization': userId
-            })}
+                headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem("token") 
+            }}
 
         const data = await axios.get(herokuUrl + '/users/' + userId, options)
         setChartId(prev => prev + 1)
@@ -31,7 +33,8 @@ function index() {
         console.log(data.data)
         createDataStructureForCharts(data.data, setBarConfig, setPieConfig)
     }
-    fetchData(setBarConfig, setPieConfig, setChartId)
+    fetchData()
+    console.log('cheese')
   }, [])
 
 
