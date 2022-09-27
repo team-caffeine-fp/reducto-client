@@ -1,0 +1,13 @@
+.root {
+    width: 60%;
+    margin: auto;
+    height: 100%;
+}
+
+.mainGrid {
+    margin: 50px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.503);
+    border-radius: 30px;
+    min-width: 70vw;
+}
