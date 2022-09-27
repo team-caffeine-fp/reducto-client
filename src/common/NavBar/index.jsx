@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Outlet } from 'react-router-dom'
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -21,6 +22,7 @@ import { HiChevronLeft } from "react-icons/hi";
 import { Outlet } from 'react-router-dom'
 import useWindowDimensions from '../WindowDimensions';
 
+import { useData } from '../../context';
 
 const drawerWidth = 240;
 
@@ -72,8 +74,11 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+
   const { height, width } = useWindowDimensions();
-  
+  const {loadData} = useData()
+
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -87,6 +92,7 @@ export default function PersistentDrawerLeft() {
       setOpen(true)
     }
   }, [width])
+  
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
