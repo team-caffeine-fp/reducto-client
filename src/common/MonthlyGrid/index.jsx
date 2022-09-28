@@ -4,23 +4,38 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
+import axios from "axios";
 
 import { Chart } from "../";
 import { createDataStructureForPie } from "../../utils";
 import { useData } from '../../context'
+import { herokuUrl } from '../../settings';
+
 
 
 function MonthlyGrid() {
   const [ pieConfig, setPieConfig ] = React.useState({})
   const [ chartId , setChartId ] = React.useState(0)
-  const { userData } = useData()
+  const { setUserData, userId } = useData()
+
   let {month} = useParams()
   
   React.useEffect(() => {
-    setChartId(prev => prev + 1)
-    month = parseInt(month)
-    console.log(month)
-    createDataStructureForPie(userData, setPieConfig, month)
+    const fetchData = async () => {
+      const options = {
+              headers: {
+              'Authorization': 'Bearer ' + localStorage.getItem("token") 
+          }}
+
+      const data = await axios.get(herokuUrl + '/users/' + userId, options)
+      setChartId(prev => prev + 1)
+      setUserData(data.data)
+      month = parseInt(month)
+      console.log(month)
+      createDataStructureForPie(data.data, setPieConfig, month)
+    }
+    fetchData()
+    
   }, [month])
   
 
