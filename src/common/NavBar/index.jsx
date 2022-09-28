@@ -75,7 +75,7 @@ export default function PersistentDrawerLeft() {
   const [open, setOpen] = React.useState(false);
 
   const { height, width } = useWindowDimensions();
-  const { userData } = useData();
+  const { userData, logout } = useData();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -113,7 +113,7 @@ export default function PersistentDrawerLeft() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
             <NavLink to={"/form"}>Form</NavLink>
           </Typography>
-          <Button color="inherit">Login</Button>
+          {localStorage.getItem('token') ? <Button color="inherit" onClick={logout}>Logout</Button> : <Button color="inherit">Login</Button>}
         </Toolbar>
       </AppBar>
       <Drawer
