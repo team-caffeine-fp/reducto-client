@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 import { useEffect } from "react";
+
 import { herokuUrl } from "./settings";
 
 const DataContext = createContext({});
@@ -9,6 +10,7 @@ const DataContext = createContext({});
 export const DataProvider = ({ children }) => {
   const navigate = useNavigate()
   axios.defaults.baseURL=herokuUrl
+  
   // Sidebar
   const drawerWidth = 240;
   const [open, setOpen] = useState(false);
@@ -60,7 +62,7 @@ export const DataProvider = ({ children }) => {
         console.log(error)
     }
   }
-  // TODO - 
+
   async function logout() {
     try{
       const options = {
@@ -92,7 +94,7 @@ export const DataProvider = ({ children }) => {
         userData,
         setUserData,
         userId,
-        fetchOnReload
+        fetchOnReload,
       }}
     >
       {children}
