@@ -6,9 +6,7 @@ import { useData } from '../../context'
 
 export default function InputAdornments({data, category}) {
   const { userId } = useData()
-  const jsfiyString = (str) => {
-    return str.replaceAll(' ', '_').toLowerCase()
-  }
+
   const createStartingObject = () => {
     let obj = {}
     for (let attr of data.fields) {
