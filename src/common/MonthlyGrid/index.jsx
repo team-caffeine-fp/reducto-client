@@ -1,23 +1,26 @@
 import React from "react";
+import { useLocation, useParams } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 
 import { Chart } from "../";
-import { createPieChartObject, createBarChartObject, createDataStructureForCharts } from "../../utils";
+import { createDataStructureForPie } from "../../utils";
 import { useData } from '../../context'
 
 
 function MonthlyGrid() {
-  const [ barConfig, setBarConfig ] = React.useState({})
   const [ pieConfig, setPieConfig ] = React.useState({})
   const [ chartId , setChartId ] = React.useState(0)
   const { userData } = useData()
-
+  let {month} = useParams()
+  
   React.useEffect(() => {
     setChartId(prev => prev + 1)
-    createDataStructureForCharts(userData, setBarConfig, setPieConfig)
+    month = parseInt(month)
+    console.log(month)
+    createDataStructureForPie(userData, setPieConfig, month)
   }, [])
   
 

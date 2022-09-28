@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -75,7 +75,7 @@ export default function PersistentDrawerLeft() {
   const [open, setOpen] = React.useState(false);
 
   const { height, width } = useWindowDimensions();
-  const { userData, logout } = useData();
+  const { userData, logout, setMonth } = useData();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -90,9 +90,14 @@ export default function PersistentDrawerLeft() {
       setOpen(true);
     }
   }, [width]);
+  
+  const navigate = useNavigate()
 
-  console.log("💥", userData);
-  console.log();
+  const toMonthlyView = (index) => {
+
+    navigate("/monthly/" + index); 
+  }
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -157,7 +162,7 @@ export default function PersistentDrawerLeft() {
           ].map((month, index) => (
             <ListItem key={index} disablePadding>
               <ListItemButton sx={{ color: "#ffffff" }}>
-                <NavLink to={"/monthly"}>{month}</NavLink>
+                <ListItemButton onClick={(e) => toMonthlyView(index + 1)}>{month}</ListItemButton>
               </ListItemButton>
             </ListItem>
           ))}
@@ -171,5 +176,3 @@ export default function PersistentDrawerLeft() {
     </Box>
   );
 }
-
-// TODO change Navlink to ListItemText -> ListItemButton onClick={toMonthlyView} -> toMonthlyView(index) =  month = index + 1; setMonth={month}; navigate("/monthly"); -> pass month to the utils -> use month to set totalEmissions
