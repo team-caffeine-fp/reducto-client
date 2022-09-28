@@ -115,13 +115,19 @@ export default function PersistentDrawerLeft() {
           >
             <AiOutlineMenu />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
-            <NavLink to={"/"}>Home Page</NavLink>
-          </Typography>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
-            <NavLink to={"/form"}>Form</NavLink>
-          </Typography>
-          {localStorage.getItem('token') ? <Button color="inherit" onClick={logout}>Logout</Button> : <Button color="inherit">Login</Button>}
+          <div style={{'width': '100%', display: 'flex', justifyContent: 'space-between'}}>
+            <div style={{display: 'flex'}}>
+              <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
+                  <NavLink to={"/"}><Button color="inherit">Home Page</Button></NavLink>
+              </Typography>
+              <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
+                  <NavLink to={"/form"}><Button color="inherit">Form</Button></NavLink>
+              </Typography>
+            </div>
+            <div>
+            {localStorage.getItem('token') ? <Button color="inherit" onClick={logout}>Logout</Button> : <Button color="inherit">Login</Button>}
+            </div>
+          </div>          
         </Toolbar>
       </AppBar>
       <Drawer
