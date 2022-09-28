@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { herokuUrl } from './settings'
-import { useData } from './context'
 
 
 export const createPieChartObject = (labels, title, data) => {
@@ -104,8 +103,7 @@ export const createDataStructureForCharts = (data, setBarConfig, setPieConfig) =
 
 }
 
-export const fetchDataFromApi = async (data, cat, setData) => {
-  const { userId } = useData()
+export const fetchDataFromApi = async (data, cat, setData, userId) => {
   console.log(cat)
   const token = import.meta.env.VITE_CLIMATIQ_API_KEY
   let url = 'https://beta3.api.climatiq.io/'
@@ -184,6 +182,11 @@ export const fetchDataFromApi = async (data, cat, setData) => {
       "duration_unit": "h"
     }
   }
+  const optionsForDb = {
+    headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+    }
+  }
   const newData = await axios.post(url, postingData, {
     headers: {
       'Authorization': `Bearer ${token}`
@@ -191,7 +194,7 @@ export const fetchDataFromApi = async (data, cat, setData) => {
   }).then(data => {
     const emissions = data.data.co2e
     setData(data.data, cat)
-    axios.put( herokuUrl + '/users/' + userId + '/emissions', {co2: emissions, category: cat}).then(res => console.log(res))
+    axios.put( herokuUrl + '/users/' + userId + '/emissions', {co2: emissions, category: cat}, optionsForDb).then(res => console.log(res))
   })
   return newData 
 }
