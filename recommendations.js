@@ -1,7 +1,7 @@
-{
-    recommendations: [
+
+   export const recommendations = 
         {
-            category: {
+            category:{
                 "travel_flights": {
                     1: "Pack light - The more you pack, the heavier the aircraft — and the heavier the aircraft, the more fuel required. Now, do you really need that extra things 'just in case'? Rent bulky gear at your destination instead of packing it, use miniature refillable containers for toiletries and pack versatile items that can be reworn.",
                     2: "Choose economy - All of that extra stretch room in business class does come at a substantial premium for the environment. Business and first-class seating take up more space and weight, so more fuel is required per passenger (first-class tickets account for, on average, four times the emissions of an economy seat) and, ultimately, the number of flights increases.",
@@ -46,5 +46,4 @@
                 }
             }
         }
-    ]
-}
+    
