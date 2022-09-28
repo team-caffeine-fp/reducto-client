@@ -8,10 +8,8 @@ function index({config, canvasId}) {
     const pieElem = useRef()
     const attachPie = () => {
       const ctx = pieElem.current
-      console.log(ctx)
       const pieChart = new Chart(ctx, config)
       setChart(pieChart)
-      console.log(pieChart)
       return pieChart
     }
     React.useEffect(() => {
@@ -24,7 +22,7 @@ function index({config, canvasId}) {
 
   return (
     <div className={styles.root} id={`parent${canvasId}`}>
-      <canvas id={`child${canvasId}`} ref={pieElem} data-testid='chart'></canvas>
+      <canvas className={styles.canvas} id={`child${canvasId}`} ref={pieElem} data-testid='chart'></canvas>
     </div>
 
   )

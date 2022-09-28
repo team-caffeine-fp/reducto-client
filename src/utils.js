@@ -1,15 +1,16 @@
 import axios from 'axios'
-import { herokuUrl, userId } from './settings'
+import { herokuUrl } from './settings'
+
 
 export const createPieChartObject = (labels, title, data) => {
   const backgroundColors = [
-    'rgb(255, 99, 132)',
-    'rgb(54, 162, 235)',
-    'rgb(20, 99, 132)',
-    'rgb(54, 162, 50)',
-    'rgb(20, 99, 11)',
-    'rgb(54, 55, 50)',
-    'rgb(255, 205, 86)'
+    '#68a4d894',
+    '#68bad894',
+    '#1f78a894',
+    '#346ed994',
+    '#68a4d894',
+    '#1e63b894',
+    '#363a7594'
   ]
   return {
     type: 'pie',
@@ -26,32 +27,32 @@ export const createPieChartObject = (labels, title, data) => {
 
 export const createBarChartObject = (labels, title, data) => {
   const backgroundColors = [
-    'rgba(255, 99, 132, 0.8)',
-    'rgba(255, 159, 64, 0.8)',
-    'rgba(255, 205, 86, 0.8)',
-    'rgba(75, 192, 192, 0.8)',
-    'rgba(54, 162, 235, 0.8)',
-    'rgba(153, 102, 255, 0.8)',
-    'rgba(54, 255, 235, 0.8)',
-    'rgba(153, 12, 255, 0.8)',
-    'rgba(153, 1, 255, 0.8)',
-    'rgba(54, 34, 235, 0.8)',
-    'rgba(153, 12, 55, 0.8)',
-    'rgba(201, 203, 207, 0.8)'
+    '#68a4d894',
+    '#68bad894',
+    '#1f78a894',
+    '#346ed994',
+    '#68a4d894',
+    '#1e63b894',
+    '#345b7094',
+    '#363a7594',
+    '#6349f794',
+    '#5f91ed94',
+    '#4b66b194',
+    '#1767fc94'
   ]
   const borderColors = [
-    'rgb(255, 99, 132)',
-    'rgb(255, 159, 64)',
-    'rgb(255, 205, 86)',
-    'rgb(75, 192, 192)',
-    'rgb(54, 162, 235)',
-    'rgb(153, 102, 255)',
-    'rgb(54, 162, 12)',
-    'rgb(153, 102, 45)',
-    'rgb(153, 111, 22)',
-    'rgb(54, 33, 12)',
-    'rgb(33, 102, 45)',
-    'rgb(201, 203, 207)'
+    '#68a4d8',
+    '#68bad8',
+    '#1f78a8',
+    '#346ed9',
+    '#68a4d8',
+    '#1e63b8',
+    '#345b70',
+    '#363a75',
+    '#6349f7',
+    '#5f91ed',
+    '#4b66b1',
+    '#1767fc'
   ]
   const barData = {
     labels: labels,
@@ -76,6 +77,7 @@ export const createBarChartObject = (labels, title, data) => {
   }
 }
 
+
 export const createDataStructureForCharts = (data, setBarConfig, setPieConfig) => {
   console.log(data)
   const pieConfig = {}
@@ -85,24 +87,28 @@ export const createDataStructureForCharts = (data, setBarConfig, setPieConfig) =
   barConfig.data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   barConfig.labels = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   barConfig.title = 'Our emissions over the year'
+  let totalEmissionsYearly = 0
   for (let label of pieConfig.labels) {
     const totalEmissions = () => {
       const sumValues = obj => Object.values(obj).reduce((a, b) => a + b)
       for (let i = 1; i <= 12; i++) {
         barConfig.data[i-1] += data[label][i]
       }
+      totalEmissionsYearly += sumValues(data[label])
       return sumValues(data[label])
     }
     pieConfig.data.push(totalEmissions())
   }
+  const indexOfMaxEmissions = pieConfig.data.indexOf(Math.max(...pieConfig.data))
+  const maxEmissionsCategory = pieConfig.labels[indexOfMaxEmissions]
   pieConfig.title = 'Our awful emissions'
   setPieConfig(createPieChartObject(pieConfig.labels, pieConfig.title, pieConfig.data))
   setBarConfig(createBarChartObject(barConfig.labels, barConfig.title, barConfig.data))
   console.log('bardata: ',barConfig)
-
+  return {totalEmissionsYearly, maxEmissionsCategory}
 }
 
-export const fetchDataFromApi = async (data, cat, setData) => {
+export const fetchDataFromApi = async (data, cat, setData, userId) => {
   console.log(cat)
   const token = import.meta.env.VITE_CLIMATIQ_API_KEY
   let url = 'https://beta3.api.climatiq.io/'
@@ -181,6 +187,11 @@ export const fetchDataFromApi = async (data, cat, setData) => {
       "duration_unit": "h"
     }
   }
+  const optionsForDb = {
+    headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+    }
+  }
   const newData = await axios.post(url, postingData, {
     headers: {
       'Authorization': `Bearer ${token}`
@@ -188,7 +199,27 @@ export const fetchDataFromApi = async (data, cat, setData) => {
   }).then(data => {
     const emissions = data.data.co2e
     setData(data.data, cat)
-    axios.put( herokuUrl + '/users/' + userId + '/emissions', {co2: emissions, category: cat}).then(res => console.log(res))
+    axios.put( herokuUrl + '/users/' + userId + '/emissions', {co2: emissions, category: cat}, optionsForDb).then(res => console.log(res))
   })
   return newData 
+}
+
+export const createDataStructureForPie = (data, setPieConfig, month) => {
+  console.log(data)
+
+  const pieConfig = {}
+  pieConfig.data = []
+  pieConfig.labels = ['cloud computing', "cloud memory", "cloud storage", "travel flights", "freight flights", "road freight", "electricity"]
+  
+  for (let label of pieConfig.labels) {
+    pieConfig.data.push(data[label][month])
+
+    console.log('💥',data[label][month])
+  }
+
+  console.log(pieConfig.data)
+
+  pieConfig.title = 'Our awful emissions'
+  setPieConfig(createPieChartObject(pieConfig.labels, pieConfig.title, pieConfig.data))
+
 }

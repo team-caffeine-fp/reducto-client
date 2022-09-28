@@ -14,10 +14,10 @@ import { useData } from '../../context';
 
 const register=()=>{
 
-    const paperStyle={padding :20, height:'60vh',width:'25vw', margin:"10% 10% 20% 60%", borderRadius:"10px", opacity: 0.8}
-    const avatarStyle={backgroundColor:'blue'}
-    const btnstyle={margin:'8px 0'}
-    const textfieldStyle = {margin: '0.5rem 0', backgroundColor: '#e1f5fe'}
+  const paperStyle={padding :30, height: 'auto', width: "26rem", margin:"auto", marginBottom: "2%", borderRadius:"10px", opacity: 0.7}
+  const avatarStyle={backgroundColor:'blue', marginTop: '5%'}
+  const btnstyle={margin:'8px 0'}
+  const textfieldStyle = {margin: '1rem 0', backgroundColor: '#e1f5fe'}
 
     const [username, setUsername ] = useState("")
     const [businessname, setBusinessname ] = useState("")
@@ -36,8 +36,11 @@ const register=()=>{
     }
 
     return(
-        <Grid>
-            <Paper elevation={10} style={paperStyle}>
+      <div className='viewcont paper'>
+        <img src='src\assets\images\reducto.png'></img>
+        <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ flexWrap: 'wrap-reverse', marginBottom: '3%'}}>
+          <Grid item xs={10} md={6}>
+          <Paper elevation={10} style={paperStyle}>
                 <Grid align='center'>
                      <Avatar style={avatarStyle}></Avatar>
                     <h2>Register</h2>
@@ -95,7 +98,9 @@ const register=()=>{
                 </Link>
                 </Typography>
             </Paper>
+            </Grid>  
         </Grid>
+      </div>
     )
 }
 
