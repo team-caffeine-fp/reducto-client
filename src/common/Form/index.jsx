@@ -2,8 +2,10 @@ import * as React from 'react';
 import { Box, Button, Card, CardContent, FormControl, FormHelperText, MenuItem, InputAdornment, InputLabel, OutlinedInput, Select, Typography } from '@mui/material'
 
 import { fetchDataFromApi } from '../../utils' 
+import { useData } from '../../context'
 
 export default function InputAdornments({data, category}) {
+  const { userId } = useData()
   const jsfiyString = (str) => {
     return str.replaceAll(' ', '_').toLowerCase()
   }
@@ -30,7 +32,7 @@ export default function InputAdornments({data, category}) {
   }, [data])
   const handleSubmit = () => {
     const cat = category
-    const data = fetchDataFromApi(values, cat, setFetchedData)
+    const data = fetchDataFromApi(values, cat, setFetchedData, userId)
     console.log(data)
   }
 
