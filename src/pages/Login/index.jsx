@@ -9,6 +9,7 @@ import { RiLockPasswordFill} from 'react-icons/ri'
 import InputAdornment from '@mui/material/InputAdornment';
 import { lightBlue } from '@mui/material/colors';
 import { useData } from '../../context';
+import { NavLink } from 'react-router-dom';
 
 import logo from '../../assets/images/reducto.png'
 
@@ -77,9 +78,9 @@ const login=()=>{
                   <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign in</Button>
                 </form>
                 <Typography > Do you have an account ?
-                     <Link href="/register" >
+                     <NavLink to="/register" >
                         Sign Up 
-                </Link>
+                </NavLink>
                 </Typography>
             </Paper>
             </Grid>  
