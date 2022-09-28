@@ -4,10 +4,8 @@ import { useData } from "../context";
 import { MainLayout } from "../layouts";
 
 export default function ProtectedRoute({ redirectTo }) {
-    const {user} = useData();
-    console.log(user)
+    const { fetchOnReload, user } = useData()
 
-    return user ? <MainLayout /> : <Navigate to={redirectTo} />
-    
+    return user ? <MainLayout /> : <Navigate to={redirectTo} />    
     
 }

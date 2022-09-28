@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Box, Button, Card, CardContent, FormControl, FormHelperText, MenuItem, InputAdornment, InputLabel, OutlinedInput, Select, Typography } from '@mui/material'
 
 import { fetchDataFromApi } from '../../utils' 
+import { useData } from '../../context'
 
 export default function InputAdornments({data, category}) {
-  const jsfiyString = (str) => {
-    return str.replaceAll(' ', '_').toLowerCase()
-  }
+  const { userId } = useData()
+
   const createStartingObject = () => {
     let obj = {}
     for (let attr of data.fields) {
@@ -30,7 +30,7 @@ export default function InputAdornments({data, category}) {
   }, [data])
   const handleSubmit = () => {
     const cat = category
-    const data = fetchDataFromApi(values, cat, setFetchedData)
+    const data = fetchDataFromApi(values, cat, setFetchedData, userId)
     console.log(data)
   }
 
@@ -41,7 +41,7 @@ export default function InputAdornments({data, category}) {
   }, [fetchedData])
 
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column' }}>
       <div>
         {data.fields.map((f, i) => {
             if(f.options.length == 0) {
