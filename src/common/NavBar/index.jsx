@@ -21,7 +21,7 @@ import { HiChevronLeft } from "react-icons/hi";
 import { Outlet } from 'react-router-dom'
 import useWindowDimensions from '../WindowDimensions';
 
-
+const imgStyle={ display: 'block',marginLeft: 'auto', marginRight: 'auto', marginBottom: '3%', width: '60%', minWidth: '6rem'}
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -133,6 +133,7 @@ export default function PersistentDrawerLeft() {
       >
         
         <DrawerHeader >
+          <img src='src\assets\images\reducto.png' style={imgStyle}/>
           <IconButton onClick={handleDrawerClose}>
             <HiChevronLeft style={{ fill: '#ffffff'}}/>
           </IconButton>
