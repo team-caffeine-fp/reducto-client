@@ -7,25 +7,25 @@ export const styles = {
       flexDirection: 'column',
       alignItems: 'center',
       backgroundColor: 'rgba(255, 255, 255, 0.8)',
-      borderRadius: '0px',
+      borderRadius: '20px',
       boxShadow: 'none',
-      justifyContent: 'center'
+      justifyContent: 'center',
   },
   mainGrid: {
-      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    //   backgroundColor: 'rgba(255, 255, 255, 0.8)',
       borderRadius: '10px',
       padding: '0 10px',
       width: '90%',
   },
   pieChart: {
       backgroundColor: 'rgba(255, 255, 255, 0.8)',
-      borderRadius: '0px',
+      borderRadius: '20px',
       boxShadow: 'none',
       marginBottom: 'auto'
   },
   barChart: {
       backgroundColor: 'rgba(255, 255, 255, 0.8)',
-      borderRadius: '0px',
+      borderRadius: '20px',
       boxShadow: 'none',
   }
 }

@@ -4,13 +4,13 @@ import { herokuUrl } from './settings'
 
 export const createPieChartObject = (labels, title, data) => {
   const backgroundColors = [
-    '#68a4d8',
-    '#68bad8',
-    '#1f78a8',
-    '#346ed9',
-    '#68a4d8',
-    '#1e63b8',
-    '#363a75'
+    '#68a4d894',
+    '#68bad894',
+    '#1f78a894',
+    '#346ed994',
+    '#68a4d894',
+    '#1e63b894',
+    '#363a7594'
   ]
   return {
     type: 'pie',
@@ -27,18 +27,18 @@ export const createPieChartObject = (labels, title, data) => {
 
 export const createBarChartObject = (labels, title, data) => {
   const backgroundColors = [
-    '#68a4d8',
-    '#68bad8',
-    '#1f78a8',
-    '#346ed9',
-    '#68a4d8',
-    '#1e63b8',
-    '#345b70',
-    '#363a75',
-    '#6349f7',
-    '#5f91ed',
-    '#4b66b1',
-    '#1767fc'
+    '#68a4d894',
+    '#68bad894',
+    '#1f78a894',
+    '#346ed994',
+    '#68a4d894',
+    '#1e63b894',
+    '#345b7094',
+    '#363a7594',
+    '#6349f794',
+    '#5f91ed94',
+    '#4b66b194',
+    '#1767fc94'
   ]
   const borderColors = [
     '#68a4d8',
