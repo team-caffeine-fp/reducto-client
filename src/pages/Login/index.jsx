@@ -13,7 +13,7 @@ import { useData } from '../../context';
 
 const login=()=>{
 
-    const paperStyle={padding :30, height:'50vh',width:'25vw', margin:"auto", borderRadius:"10px", opacity: 0.8}
+    const paperStyle={padding :30,height:'50vh', minHeight: '540px', width:'25vw', minWidth: "460", margin:"auto", borderRadius:"10px", opacity: 0.7}
     const avatarStyle={backgroundColor:'blue'}
     const btnstyle={margin:'8px 0'}
     const textfieldStyle = {margin: '1rem 0', backgroundColor: '#e1f5fe'}
@@ -32,12 +32,14 @@ const login=()=>{
     return(
       <>
         <img src='src\assets\images\reducto.png'></img>
-        <Grid container direction="row" justifyContent="center" alignItems="center">
-          <Grid item xs={6}>
+        <Grid container direction="row" justifyContent="center" alignItems="center" width="100%">
+          <Grid item xs={12} md={6}>
             <Paper elevation={10} style={paperStyle}>
-                <div>
+                <div className='paper'>
                   <h2>Measure your company`s carbon footprint</h2>
-                  <h3>An increasing number of organizations are looking at ways to reduce their greenhouse gas emissions as both customers and employees demand a more sustainable way of doing business. You can calculate your carbon footprint by logging in into your account and see ways of preserving our environment and slowing down climate change.</h3>
+                  <div>
+                      <p>An increasing number of organizations are looking at ways to reduce their greenhouse gas emissions as both customers and employees demand a more sustainable way of doing business.</p><p> You can calculate your carbon footprint by logging in into your account and see ways of preserving our environment and slowing down climate change.</p>
+                  </div>
                 </div>
               </Paper>
             </Grid>
