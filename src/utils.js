@@ -77,6 +77,7 @@ export const createBarChartObject = (labels, title, data) => {
   }
 }
 
+
 export const createDataStructureForCharts = (data, setBarConfig, setPieConfig) => {
   console.log(data)
   const pieConfig = {}
@@ -86,21 +87,25 @@ export const createDataStructureForCharts = (data, setBarConfig, setPieConfig) =
   barConfig.data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   barConfig.labels = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   barConfig.title = 'Our emissions over the year'
+  let totalEmissionsYearly = 0
   for (let label of pieConfig.labels) {
     const totalEmissions = () => {
       const sumValues = obj => Object.values(obj).reduce((a, b) => a + b)
       for (let i = 1; i <= 12; i++) {
         barConfig.data[i-1] += data[label][i]
       }
+      totalEmissionsYearly += sumValues(data[label])
       return sumValues(data[label])
     }
     pieConfig.data.push(totalEmissions())
   }
+  const indexOfMaxEmissions = pieConfig.data.indexOf(Math.max(...pieConfig.data))
+  const maxEmissionsCategory = pieConfig.labels[indexOfMaxEmissions]
   pieConfig.title = 'Our awful emissions'
   setPieConfig(createPieChartObject(pieConfig.labels, pieConfig.title, pieConfig.data))
   setBarConfig(createBarChartObject(barConfig.labels, barConfig.title, barConfig.data))
   console.log('bardata: ',barConfig)
-
+  return {totalEmissionsYearly, maxEmissionsCategory}
 }
 
 export const fetchDataFromApi = async (data, cat, setData, userId) => {
@@ -197,4 +202,24 @@ export const fetchDataFromApi = async (data, cat, setData, userId) => {
     axios.put( herokuUrl + '/users/' + userId + '/emissions', {co2: emissions, category: cat}, optionsForDb).then(res => console.log(res))
   })
   return newData 
+}
+
+export const createDataStructureForPie = (data, setPieConfig, month) => {
+  console.log(data)
+
+  const pieConfig = {}
+  pieConfig.data = []
+  pieConfig.labels = ['cloud computing', "cloud memory", "cloud storage", "travel flights", "freight flights", "road freight", "electricity"]
+  
+  for (let label of pieConfig.labels) {
+    pieConfig.data.push(data[label][month])
+
+    console.log('💥',data[label][month])
+  }
+
+  console.log(pieConfig.data)
+
+  pieConfig.title = 'Our awful emissions'
+  setPieConfig(createPieChartObject(pieConfig.labels, pieConfig.title, pieConfig.data))
+
 }
