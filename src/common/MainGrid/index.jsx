@@ -5,12 +5,12 @@ import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import { Chart, Container } from '../'
-import styles from './index.module.css'
-import { createPieChartObject, createBarChartObject, createDataStructureForCharts } from '../../utils'
-import { userId, herokuUrl } from '../../settings';
+import { Chart } from '../'
+import { createDataStructureForCharts } from '../../utils'
+import { herokuUrl } from '../../settings';
 import { useData } from '../../context'
 import { recommendations } from '../../recommendations'
+import { styles } from './styles'
 
 function index() {
   const [ barConfig, setBarConfig ] = React.useState({})
@@ -19,37 +19,7 @@ function index() {
   const [ totalEmissions , setTotalEmissions ] = React.useState(0)
   const [ maxEmissionLabel , setMaxEmissionLabel ] = React.useState('')
   const { setUserData, userId } = useData()
-  const styles = {
-    card: {
-        minHeight: '150px',
-        height: '100%',
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-        borderRadius: '0px',
-        boxShadow: 'none',
-        justifyContent: 'center'
-    },
-    mainGrid: {
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-        borderRadius: '10px',
-        padding: '0 10px',
-        width: '90%',
-    },
-    pieChart: {
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-        borderRadius: '0px',
-        boxShadow: 'none',
-        marginBottom: 'auto'
-    },
-    barChart: {
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-        borderRadius: '0px',
-        boxShadow: 'none',
-    }
-  }
+
   React.useEffect(() => {
     const fetchData = async () => {
         const options = {
