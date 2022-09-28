@@ -41,7 +41,7 @@ export default function InputAdornments({data, category}) {
   }, [fetchedData])
 
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column' }}>
       <div>
         {data.fields.map((f, i) => {
             if(f.options.length == 0) {

@@ -4,13 +4,13 @@ import { herokuUrl } from './settings'
 
 export const createPieChartObject = (labels, title, data) => {
   const backgroundColors = [
-    'rgb(255, 99, 132)',
-    'rgb(54, 162, 235)',
-    'rgb(20, 99, 132)',
-    'rgb(54, 162, 50)',
-    'rgb(20, 99, 11)',
-    'rgb(54, 55, 50)',
-    'rgb(255, 205, 86)'
+    '#68a4d894',
+    '#68bad894',
+    '#1f78a894',
+    '#346ed994',
+    '#68a4d894',
+    '#1e63b894',
+    '#363a7594'
   ]
   return {
     type: 'pie',
@@ -27,32 +27,32 @@ export const createPieChartObject = (labels, title, data) => {
 
 export const createBarChartObject = (labels, title, data) => {
   const backgroundColors = [
-    'rgba(255, 99, 132, 0.8)',
-    'rgba(255, 159, 64, 0.8)',
-    'rgba(255, 205, 86, 0.8)',
-    'rgba(75, 192, 192, 0.8)',
-    'rgba(54, 162, 235, 0.8)',
-    'rgba(153, 102, 255, 0.8)',
-    'rgba(54, 255, 235, 0.8)',
-    'rgba(153, 12, 255, 0.8)',
-    'rgba(153, 1, 255, 0.8)',
-    'rgba(54, 34, 235, 0.8)',
-    'rgba(153, 12, 55, 0.8)',
-    'rgba(201, 203, 207, 0.8)'
+    '#68a4d894',
+    '#68bad894',
+    '#1f78a894',
+    '#346ed994',
+    '#68a4d894',
+    '#1e63b894',
+    '#345b7094',
+    '#363a7594',
+    '#6349f794',
+    '#5f91ed94',
+    '#4b66b194',
+    '#1767fc94'
   ]
   const borderColors = [
-    'rgb(255, 99, 132)',
-    'rgb(255, 159, 64)',
-    'rgb(255, 205, 86)',
-    'rgb(75, 192, 192)',
-    'rgb(54, 162, 235)',
-    'rgb(153, 102, 255)',
-    'rgb(54, 162, 12)',
-    'rgb(153, 102, 45)',
-    'rgb(153, 111, 22)',
-    'rgb(54, 33, 12)',
-    'rgb(33, 102, 45)',
-    'rgb(201, 203, 207)'
+    '#68a4d8',
+    '#68bad8',
+    '#1f78a8',
+    '#346ed9',
+    '#68a4d8',
+    '#1e63b8',
+    '#345b70',
+    '#363a75',
+    '#6349f7',
+    '#5f91ed',
+    '#4b66b1',
+    '#1767fc'
   ]
   const barData = {
     labels: labels,

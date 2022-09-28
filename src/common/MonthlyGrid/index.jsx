@@ -37,16 +37,22 @@ function MonthlyGrid() {
     fetchData()
     
   }, [month])
-  
+  const styles = {
+    grid: {
+      margin: 'auto',
+      width: '70%',
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      padding: '20px',
+      borderRadius: '20px',
+
+    }
+  }
 
   return (
     <>
-      <Grid container spacing={2} style={{ width: "100%" }}>
-        <Grid item xs={6}>
+      <Grid container spacing={2} style={styles.grid}>
+        <Grid item xs={12} >
             <Chart config={pieConfig} canvasId={chartId} />
-        </Grid>
-        <Grid item xs={6}>
-            
         </Grid>
       </Grid>
     </>

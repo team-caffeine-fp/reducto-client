@@ -49,54 +49,49 @@ function index() {
   return (
         <Grid container spacing={2} style={styles.mainGrid}>
           <Grid item xs={12} lg={6}>
-          <Grid container spacing={2}>
-
-            <Grid item xs={12}>
-
-            <Card style={styles.barChart}> 
-              <Chart config={barConfig} canvasId={chartId} />
-            </Card>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <Card style={styles.barChart}> 
+                  <Chart config={barConfig} canvasId={chartId} />
+                </Card>
+              </Grid>
+              <Grid item xs={12}>
+                <Card style={styles.pieChart}> 
+                  <Chart config={pieConfig} canvasId={chartId}/>
+                </Card>
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-
-            <Card style={styles.pieChart}> 
-              <Chart config={pieConfig} canvasId={chartId}/>
-            </Card>
           </Grid>
-          </Grid>
-          </Grid>
-          <Grid item xs={12} lg={6} style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}} >
-            <Grid container rowSpacing={2} style={{width: '100%', height: '100%'}}>
-            <Grid item xs={12}>
-              <Card style={styles.card}> 
+          <Grid item xs={12} lg={6} style={{display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'space-between'}} >
+            <Grid container spacing={2} style={{width: '100%', height: '100%'}} >
+              <Grid item xs={12}>
+                <Card style={styles.card}> 
                   <Typography variant="h5" sx={{ fontSize: 14, fontWeight: 'bold' }} color="text.secondary" gutterBottom>
                       This month you produced on average
                   </Typography>
                   <Typography variant="h4" sx={{ fontSize: 25 }} color="text.secondary" >
                       {(totalEmissions/12).toLocaleString("en-US")} kg of CO<sub>2</sub>
                   </Typography>
-              </Card>
-              </Grid>
-              <Grid item xs={12}>
-                <Card style={styles.card}> 
-                    <Typography variant="h5" sx={{ fontSize: 14, fontWeight: 'bold' }} color="text.secondary" gutterBottom>
-                        This year you produced
-                    </Typography>
-                    <Typography variant="h4" sx={{ fontSize: 25 }} color="text.secondary" >
-                        {totalEmissions.toLocaleString("en-US")} kg of CO<sub>2</sub>
-                    </Typography>
-                    <CardActions>
-                    </CardActions>
                 </Card>
               </Grid>
               <Grid item xs={12}>
                 <Card style={styles.card}> 
-                    <Typography variant="h5" sx={{ fontSize: 14, fontWeight: 'bold', padding: '0 20%' }} color="text.secondary" gutterBottom>
-                            {maxEmissionLabel && recommendations[maxEmissionLabel].a}
-                    </Typography>
-                    <CardActions>
-                        {maxEmissionLabel && <Button size="small"><a href={recommendations[maxEmissionLabel].link}>Learn more</a></Button>}
-                    </CardActions>
+                  <Typography variant="h5" sx={{ fontSize: 14, fontWeight: 'bold' }} color="text.secondary" gutterBottom>
+                      This year you produced
+                  </Typography>
+                  <Typography variant="h4" sx={{ fontSize: 25 }} color="text.secondary" >
+                      {totalEmissions.toLocaleString("en-US")} kg of CO<sub>2</sub>
+                  </Typography>
+                </Card>
+              </Grid>
+              <Grid item xs={12}>
+                <Card style={styles.card}> 
+                  <Typography variant="h5" sx={{ fontSize: 14, fontWeight: 'bold', padding: '0 20%' }} color="text.secondary" gutterBottom>
+                    {maxEmissionLabel && recommendations[maxEmissionLabel].a}
+                  </Typography>
+                  <CardActions>
+                    {maxEmissionLabel && <Button size="small"><a href={recommendations[maxEmissionLabel].link}>Learn more</a></Button>}
+                  </CardActions>
                 </Card>
               </Grid>
             </Grid>
