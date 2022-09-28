@@ -17,7 +17,36 @@ function index() {
   const [ pieConfig, setPieConfig ] = React.useState({})
   const [ chartId , setChartId ] = React.useState(0)
   const { setUserData, userId } = useData()
-
+  const styles = {
+    card: {
+        height: '100%',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        borderRadius: '0px',
+        boxShadow: 'none',
+        justifyContent: 'center'
+    },
+    mainGrid: {
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        borderRadius: '10px',
+        padding: '0 10px',
+        width: '90%',
+    },
+    pieChart: {
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        borderRadius: '0px',
+        boxShadow: 'none',
+        marginBottom: '15px'
+    },
+    barChart: {
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        borderRadius: '0px',
+        boxShadow: 'none',
+    }
+  }
   React.useEffect(() => {
     const fetchData = async () => {
         const options = {
@@ -36,43 +65,62 @@ function index() {
 
 
   return (
-    <Container variant={'mainGrid'}>
-        <Grid container spacing={2} style={{width: '100%'}}>
-          <Grid item xs={8}>
+        <Grid container spacing={2} style={styles.mainGrid}>
+          <Grid item xs={6}>
+          <Grid container spacing={2}>
+
+            <Grid item xs={12}>
+
+            <Card style={styles.barChart}> 
               <Chart config={barConfig} canvasId={chartId} />
+            </Card>
+            </Grid>
+            <Grid item xs={12}>
+
+            <Card style={styles.pieChart}> 
               <Chart config={pieConfig} canvasId={chartId}/>
+            </Card>
           </Grid>
-          <Grid item xs={4} style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}} >
-              <Card style={{flexBasis: '30%', borderRadius: '20px', boxShadow: '2px 2px 2px 1px rgba(0, 0, 0, 0.2)', backgroundColor: "red", width: '100%', padding: '50px', marginBottom: '30px' }}> 
+          </Grid>
+          </Grid>
+          <Grid item xs={6} style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}} >
+            <Grid container rowSpacing={2} style={{width: '100%', height: '100%'}}>
+            <Grid item xs={12}>
+              <Card style={styles.card}> 
                   <Typography variant="h5" sx={{ fontSize: 14, fontWeight: 'bold' }} color="text.secondary" gutterBottom>
                       This month you produced
                   </Typography>
                   <Typography variant="h4" sx={{ fontSize: 25 }} color="text.secondary" >
-                      2.345t of CO<sub>2</sub>
+                      0.345t of CO<sub>2</sub>
                   </Typography>
               </Card>
-              <Card style={{flexBasis: '30%', borderRadius: '20px', boxShadow: '2px 2px 2px 1px rgba(0, 0, 0, 0.2)', backgroundColor: "green", width: '100%', padding: '50px', marginBottom: '30px' }}> 
-                  <Typography variant="h5" sx={{ fontSize: 14, fontWeight: 'bold' }} color="text.secondary" gutterBottom>
-                        See the recommendations we've got for you!
-                  </Typography>
-                  <CardActions>
-                      <Button size="small">Learn More</Button>
-                  </CardActions>
-              </Card>
-              <Card style={{flexBasis: '30%', borderRadius: '20px', boxShadow: '2px 2px 2px 1px rgba(0, 0, 0, 0.2)',  backgroundColor: "yellow", width: '100%', padding: '50px', marginBottom: '30px' }}> 
-                  <Typography variant="h5" sx={{ fontSize: 14, fontWeight: 'bold' }} color="text.secondary" gutterBottom>
-                      This month you produced
-                  </Typography>
-                  <Typography variant="h4" sx={{ fontSize: 25 }} color="text.secondary" >
-                      2.345t of CO<sub>2</sub>
-                  </Typography>
-                  <CardActions>
-                      <Button size="small">Learn More</Button>
-                  </CardActions>
-              </Card>
+              </Grid>
+              <Grid item xs={12}>
+                <Card style={styles.card}> 
+                    <Typography variant="h5" sx={{ fontSize: 14, fontWeight: 'bold' }} color="text.secondary" gutterBottom>
+                        This year you produced
+                    </Typography>
+                    <Typography variant="h4" sx={{ fontSize: 25 }} color="text.secondary" >
+                        2.345t of CO<sub>2</sub>
+                    </Typography>
+                    <CardActions>
+                        <Button size="small">Learn More</Button>
+                    </CardActions>
+                </Card>
+              </Grid>
+              <Grid item xs={12}>
+                <Card style={styles.card}> 
+                    <Typography variant="h5" sx={{ fontSize: 14, fontWeight: 'bold', padding: '0 20%' }} color="text.secondary" gutterBottom>
+                            See the recommendations we've got for you!
+                    </Typography>
+                    <CardActions>
+                        <Button size="small">Learn More</Button>
+                    </CardActions>
+                </Card>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
-    </Container>
   )
 }
 
