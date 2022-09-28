@@ -94,8 +94,7 @@ export const DataProvider = ({ children }) => {
         userData,
         setUserData,
         userId,
-        fetchOnReload
-
+        fetchOnReload,
       }}
     >
       {children}
