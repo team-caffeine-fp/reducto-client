@@ -10,6 +10,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 import { lightBlue } from '@mui/material/colors';
 import { useData } from '../../context';
 
+import logo from '../../assets/images/reducto.png'
+
 const login=()=>{
 
     const paperStyle={padding :30, height: '30rem', width: "26rem", margin:"auto", marginBottom: "2%", borderRadius:"10px", opacity: 0.7}
@@ -30,7 +32,7 @@ const login=()=>{
 
     return(
       <>
-        <img src='.\assets\images\reducto.png'></img>
+        <img src={logo}></img>
         <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ flexWrap: 'wrap-reverse', marginBottom: '3%'}}>
           <Grid item xs={10} md={6}>
             <Paper elevation={10} style={paperStyle}>

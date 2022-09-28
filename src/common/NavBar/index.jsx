@@ -20,6 +20,8 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { HiChevronLeft } from "react-icons/hi";
 
 import useWindowDimensions from "../WindowDimensions";
+import logo from '../../assets/images/reducto.png'
+
 
 
 const imgStyle={ display: 'block',marginLeft: 'auto', marginRight: 'auto', marginBottom: '3%', width: '60%', minWidth: '6rem'}
@@ -150,7 +152,7 @@ export default function PersistentDrawerLeft() {
       >
         
         <DrawerHeader >
-          <img src='.\assets\images\reducto.png' style={imgStyle}/>
+          <img src={logo} style={imgStyle}/>
           <IconButton onClick={handleDrawerClose}>
             <HiChevronLeft style={{ fill: "#ffffff" }} />
           </IconButton>
