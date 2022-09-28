@@ -19,6 +19,7 @@ function index() {
   const { setUserData, userId } = useData()
   const styles = {
     card: {
+        minHeight: '150px',
         height: '100%',
         width: '100%',
         display: 'flex',
@@ -39,7 +40,7 @@ function index() {
         backgroundColor: 'rgba(255, 255, 255, 0.8)',
         borderRadius: '0px',
         boxShadow: 'none',
-        marginBottom: '15px'
+        marginBottom: 'auto'
     },
     barChart: {
         backgroundColor: 'rgba(255, 255, 255, 0.8)',
@@ -66,7 +67,7 @@ function index() {
 
   return (
         <Grid container spacing={2} style={styles.mainGrid}>
-          <Grid item xs={6}>
+          <Grid item xs={12} lg={6}>
           <Grid container spacing={2}>
 
             <Grid item xs={12}>
@@ -83,7 +84,7 @@ function index() {
           </Grid>
           </Grid>
           </Grid>
-          <Grid item xs={6} style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}} >
+          <Grid item xs={12} lg={6} style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}} >
             <Grid container rowSpacing={2} style={{width: '100%', height: '100%'}}>
             <Grid item xs={12}>
               <Card style={styles.card}> 
