@@ -22,7 +22,7 @@ function index({config, canvasId}) {
 
   return (
     <div className={styles.root} id={`parent${canvasId}`}>
-      <canvas id={`child${canvasId}`} ref={pieElem} data-testid='chart'></canvas>
+      <canvas className={styles.canvas} id={`child${canvasId}`} ref={pieElem} data-testid='chart'></canvas>
     </div>
 
   )
