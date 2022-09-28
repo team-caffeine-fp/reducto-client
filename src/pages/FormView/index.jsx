@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormControl, InputLabel, Select, MenuItem } from '@mui/material'
+import { FormControl, InputLabel, Select, MenuItem, Box } from '@mui/material'
 
 import data from './data'
 import { Container, Form } from '../../common'
@@ -18,8 +18,19 @@ function index() {
 
   }, [category])
   
+  
+  const styles = {
+    box: {
+      padding: '20px',
+      borderRadius: '20px',
+      width: '60%',
+      margin: 'auto',
+      backgroundColor: 'rgba(255,255,255,0.8)'
+    }
+  }
+
   return (
-    <Container>
+    <Box style={styles.box}>
       <FormControl fullWidth>
         <InputLabel id="data-category">Category</InputLabel>
         <Select
@@ -33,7 +44,7 @@ function index() {
         </Select>
         <Form data={currentData} category={category} />
       </FormControl>
-    </Container>
+    </Box>
   )
 }
 
