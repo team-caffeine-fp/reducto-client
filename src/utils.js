@@ -2,13 +2,14 @@ import axios from 'axios'
 
 export const createPieChartObject = (labels, title, data) => {
   const backgroundColors = [
-    'rgb(255, 99, 132)',
-    'rgb(54, 162, 235)',
-    'rgb(20, 99, 132)',
-    'rgb(54, 162, 50)',
-    'rgb(20, 99, 11)',
-    'rgb(54, 55, 50)',
-    'rgb(255, 205, 86)'
+    'rgb(22, 22, 129, 0.8)',
+    'rgb(196, 224, 249, 0.8)',
+    'rgb(102, 34, 204, 0.8)',
+    'rgb(189, 147, 189, 0.8)',
+    'rgb(42, 192, 249, 0.8)',
+    'rgb(103, 170, 249, 0.8)',
+    'rgb(155, 189, 249, 0.8)'
+    
   ]
   return {
     type: 'pie',
@@ -25,15 +26,15 @@ export const createPieChartObject = (labels, title, data) => {
 
 export const createBarChartObject = (labels, title, data) => {
   const backgroundColors = [
-    'rgba(255, 99, 132, 0.8)',
-    'rgba(255, 159, 64, 0.8)',
-    'rgba(255, 205, 86, 0.8)',
-    'rgba(75, 192, 192, 0.8)',
-    'rgba(54, 162, 235, 0.8)',
-    'rgba(153, 102, 255, 0.8)',
-    'rgba(54, 255, 235, 0.8)',
-    'rgba(153, 12, 255, 0.8)',
-    'rgba(201, 203, 207, 0.8)'
+    'rgba(255,255,255,0.8)'
+    // 'rgba(255, 159, 64, 0.8)',
+    // 'rgba(255, 205, 86, 0.8)',
+    // 'rgba(75, 192, 192, 0.8)',
+    // 'rgba(54, 162, 235, 0.8)',
+    // 'rgba(153, 102, 255, 0.8)',
+    // 'rgba(54, 255, 235, 0.8)',
+    // 'rgba(153, 12, 255, 0.8)',
+    // 'rgba(201, 203, 207, 0.8)'
   ]
   const borderColors = [
     'rgb(255, 99, 132)',
