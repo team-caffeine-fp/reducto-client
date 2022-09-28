@@ -12,7 +12,7 @@ export default function App(){
           <Route path="/" element={<ProtectedRoute redirectTo="/login"/>}>
               <Route index element={<Dashboard />}></Route>
               <Route path='/form' element={<FormView />}></Route>
-              <Route path={'/monthly'} element={<MonthlyView/>}></Route>
+              <Route path={'/monthly/:month'} element={<MonthlyView/>}></Route>
           </Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/register' element={<Register />}></Route>  
