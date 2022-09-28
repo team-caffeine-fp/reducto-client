@@ -195,3 +195,23 @@ export const fetchDataFromApi = async (data, cat, setData) => {
   })
   return newData 
 }
+
+export const createDataStructureForPie = (data, setPieConfig, month) => {
+  console.log(data)
+
+  const pieConfig = {}
+  pieConfig.data = []
+  pieConfig.labels = ['cloud computing', "cloud memory", "cloud storage", "travel flights", "freight flights", "road freight", "electricity"]
+  
+  for (let label of pieConfig.labels) {
+    pieConfig.data.push(data[label][month])
+
+    console.log('💥',data[label][month])
+  }
+
+  console.log(pieConfig.data)
+
+  pieConfig.title = 'Our awful emissions'
+  setPieConfig(createPieChartObject(pieConfig.labels, pieConfig.title, pieConfig.data))
+
+}

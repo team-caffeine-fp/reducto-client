@@ -21,7 +21,7 @@ function MonthlyGrid() {
     month = parseInt(month)
     console.log(month)
     createDataStructureForPie(userData, setPieConfig, month)
-  }, [])
+  }, [month])
   
 
   return (
