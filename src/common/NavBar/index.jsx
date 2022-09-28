@@ -15,13 +15,11 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { NavLink } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { HiChevronLeft } from "react-icons/hi";
 
 import useWindowDimensions from "../WindowDimensions";
 import logo from '../../assets/images/reducto.png'
-
 
 
 const imgStyle={ display: 'block',marginLeft: 'auto', marginRight: 'auto', marginBottom: '3%', width: '60%', minWidth: '6rem'}
@@ -99,8 +97,13 @@ export default function PersistentDrawerLeft() {
   const navigate = useNavigate()
 
   const toMonthlyView = (index) => {
-
     navigate("/monthly/" + index); 
+  }
+  const toHome = (index) => {
+    navigate("/"); 
+  }
+  const toForm = (index) => {
+    navigate("/form"); 
   }
 
   return (
@@ -119,12 +122,8 @@ export default function PersistentDrawerLeft() {
           </IconButton>
           <div style={{'width': '100%', display: 'flex', justifyContent: 'space-between'}}>
             <div style={{display: 'flex'}}>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
-                  <NavLink to={"/"}><Button color="inherit">Home Page</Button></NavLink>
-              </Typography>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 0.05 }}>
-                  <NavLink to={"/form"}><Button color="inherit">Form</Button></NavLink>
-              </Typography>
+                  <Button onClick={toHome} color="inherit">Home Page</Button>
+                  <Button onClick={toForm} color="inherit">Form</Button>
             </div>
             <div>
             {localStorage.getItem('token') ? <Button color="inherit" onClick={logout}>Logout</Button> : <Button color="inherit">Login</Button>}
