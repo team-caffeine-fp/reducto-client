@@ -62,7 +62,7 @@ export const DataProvider = ({ children }) => {
         console.log(error)
     }
   }
-  // TODO - 
+
   async function logout() {
     try{
       const options = {
