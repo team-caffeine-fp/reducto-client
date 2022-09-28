@@ -13,8 +13,8 @@ import { useData } from '../../context';
 
 const login=()=>{
 
-    const paperStyle={padding :30, height: '35rem', width: "320px", margin:"auto", marginBottom: "2%", borderRadius:"10px", opacity: 0.7}
-    const avatarStyle={backgroundColor:'blue'}
+    const paperStyle={padding :30, height: '30rem', width: "26rem", margin:"auto", marginBottom: "2%", borderRadius:"10px", opacity: 0.7}
+    const avatarStyle={backgroundColor:'blue', marginTop: '5%'}
     const btnstyle={margin:'8px 0'}
     const textfieldStyle = {margin: '1rem 0', backgroundColor: '#e1f5fe'}
 
@@ -32,7 +32,7 @@ const login=()=>{
     return(
       <>
         <img src='src\assets\images\reducto.png'></img>
-        <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ flexWrap: 'wrap-reverse' }}>
+        <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ flexWrap: 'wrap-reverse', marginBottom: '3%'}}>
           <Grid item xs={10} md={6}>
             <Paper elevation={10} style={paperStyle}>
                 <div className='paper'>
@@ -47,7 +47,7 @@ const login=()=>{
           <Paper elevation={10} style={paperStyle}>
                 <Grid align='center'>
                      <Avatar style={avatarStyle}></Avatar>
-                    <h2>Sign In</h2>
+                    <h2 className='paper'>Sign In</h2>
                 </Grid>
                 <form onSubmit={handleSubmit}>
                   <TextField label='Username' placeholder='Enter username' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
