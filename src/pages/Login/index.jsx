@@ -35,7 +35,7 @@ const login=()=>{
           <Grid item xs={10} md={6}>
             <Paper elevation={10} style={paperStyle}>
                 <div className='paper'>
-                  <h2>Measure your company`s carbon footprint</h2>
+                  <h2>Measure your company's carbon footprint</h2>
                   <div>
                       <p>An increasing number of organizations are looking at ways to reduce their greenhouse gas emissions as both customers and employees demand a more sustainable way of doing business.</p><p> You can calculate your carbon footprint by logging in into your account and see ways of preserving our environment and slowing down climate change.</p>
                   </div>
