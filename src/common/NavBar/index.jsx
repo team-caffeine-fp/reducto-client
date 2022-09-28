@@ -144,7 +144,7 @@ export default function PersistentDrawerLeft() {
       >
         
         <DrawerHeader >
-          <img src='src\assets\images\reducto.png' style={imgStyle}/>
+          <img src='.\assets\images\reducto.png' style={imgStyle}/>
           <IconButton onClick={handleDrawerClose}>
             <HiChevronLeft style={{ fill: "#ffffff" }} />
           </IconButton>
