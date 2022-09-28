@@ -30,7 +30,7 @@ const login=()=>{
 
     return(
       <>
-        <img src='src\assets\images\reducto.png'></img>
+        <img src='.\assets\images\reducto.png'></img>
         <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ flexWrap: 'wrap-reverse', marginBottom: '3%'}}>
           <Grid item xs={10} md={6}>
             <Paper elevation={10} style={paperStyle}>
