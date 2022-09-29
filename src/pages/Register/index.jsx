@@ -53,7 +53,7 @@ const register=()=>{
               </InputAdornment>
             ),
           }} value={username} onChange={(e) => setUsername(e.target.value)}/>
-                  <TextField label='businessname' placeholder='Enter business name' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
+                  <TextField label='Business name' placeholder='Enter business name' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
             startAdornment: (
               <InputAdornment position="start">
                 <FaUser />
