@@ -10,7 +10,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import { lightBlue } from '@mui/material/colors';
 import { useData } from '../../context';
 import { NavLink } from 'react-router-dom';
-
+import logo from '../../assets/images/reducto.png'
 
 const register=()=>{
 
@@ -37,7 +37,7 @@ const register=()=>{
 
     return(
       <div className='viewcont paper'>
-        <img src='src\assets\images\reducto.png'></img>
+        <img src={logo}></img>
         <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ flexWrap: 'wrap-reverse', marginBottom: '3%'}}>
           <Grid item xs={10} md={6}>
           <Paper elevation={10} style={paperStyle}>
@@ -53,7 +53,7 @@ const register=()=>{
               </InputAdornment>
             ),
           }} value={username} onChange={(e) => setUsername(e.target.value)}/>
-                  <TextField label='businessname' placeholder='Enter business name' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
+                  <TextField label='Business name' placeholder='Enter business name' variant="outlined" fullWidth required style={textfieldStyle} InputProps={{
             startAdornment: (
               <InputAdornment position="start">
                 <FaUser />
