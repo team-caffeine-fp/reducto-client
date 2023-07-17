@@ -1,7 +1,7 @@
 # Reducto
 
 ## Demo Link 
-*https://carbon-reducto.netlify.app/*
+*https://carbon-reducto.netlify.app/*{:target=”_blank”}
 <p>&nbsp</p>
 
 ## Table of Contents 
