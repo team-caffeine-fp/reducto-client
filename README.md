@@ -1,7 +1,7 @@
 # Reducto
 
 ## Demo Link 
-<a href="https://carbon-reducto.netlify.app/" target="_blank">Demo</a>
+[Demo](https://carbon-reducto.netlify.app/)
 <p>&nbsp</p>
 
 ## Technologies Used 
